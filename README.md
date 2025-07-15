@@ -27,7 +27,7 @@ export PATH="/d/Xilinx/Vivado/2022.2/bin:$PATH"
 Para clonar el repositorio con exito y sin errores usar la siguiente linea
 
 ```bash
-git clone -b devFabian --recurse-submodules https://github.com/fabioc9675/Vidado_HOG_example.git 
+git clone -b devFabianAFEHOG --recurse-submodules https://github.com/fabioc9675/DUNE_Daphne_v3_AFE.git
 ```
 
 Con `--recurse-submodules` se garantiza que se clonan los submodulos completos, y con `-b devFabian` es para clonar el branch en el que estoy trabajando con el modulo HOG,
@@ -45,7 +45,7 @@ Con esto se escanearan los proyectos existentes y Hog creara un directorio `Top`
 Luego crearemos el proyecto con la linea:
 
 ```bash
-./Hog/Do CREATE project_hog
+./Hog/Do CREATE AFE_serdes_slow
 ```
 
 `project_hog` es el nombre que le dimos al proyecto inicialmente, entonces ahi se pone el nombre del proyecto que se este creando
