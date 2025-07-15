@@ -4818,8 +4818,8 @@
         "components": {
           "axi_dma_sine": {
             "vlnv": "xilinx.com:ip:axi_dma:7.1",
-            "xci_name": "kria_bd_axi_dma_0_0",
-            "xci_path": "ip\\kria_bd_axi_dma_0_0\\kria_bd_axi_dma_0_0.xci",
+            "xci_name": "kria_bd_axi_dma_sine_0",
+            "xci_path": "ip\\kria_bd_axi_dma_sine_0\\kria_bd_axi_dma_sine_0.xci",
             "inst_hier_path": "Axi_DMA/axi_dma_sine",
             "parameters": {
               "c_include_mm2s": {
@@ -4863,8 +4863,8 @@
           },
           "ADQ_DataFifo_Sine": {
             "vlnv": "fabian.castano:Dune:ADQ_DataFifo:1.0",
-            "xci_name": "kria_bd_ADQ_DataFifo_0_0",
-            "xci_path": "ip\\kria_bd_ADQ_DataFifo_0_0\\kria_bd_ADQ_DataFifo_0_0.xci",
+            "xci_name": "kria_bd_ADQ_DataFifo_Sine_0",
+            "xci_path": "ip\\kria_bd_ADQ_DataFifo_Sine_0\\kria_bd_ADQ_DataFifo_Sine_0.xci",
             "inst_hier_path": "Axi_DMA/ADQ_DataFifo_Sine"
           }
         },
@@ -5054,8 +5054,8 @@
         "components": {
           "ADQ_DataFifo_AFE": {
             "vlnv": "fabian.castano:Dune:ADQ_DataFifo:1.0",
-            "xci_name": "kria_bd_ADQ_DataFifo_Sine_1",
-            "xci_path": "ip\\kria_bd_ADQ_DataFifo_Sine_1\\kria_bd_ADQ_DataFifo_Sine_1.xci",
+            "xci_name": "kria_bd_ADQ_DataFifo_AFE_0",
+            "xci_path": "ip\\kria_bd_ADQ_DataFifo_AFE_0\\kria_bd_ADQ_DataFifo_AFE_0.xci",
             "inst_hier_path": "AXI_DMA_Real/ADQ_DataFifo_AFE"
           },
           "axi_dma_afe": {
@@ -5198,14 +5198,14 @@
         "components": {
           "ADQ_DataFifo_AFE_Diff": {
             "vlnv": "fabian.castano:Dune:ADQ_DataFifo:1.0",
-            "xci_name": "kria_bd_ADQ_DataFifo_AFE_0",
-            "xci_path": "ip\\kria_bd_ADQ_DataFifo_AFE_0\\kria_bd_ADQ_DataFifo_AFE_0.xci",
+            "xci_name": "kria_bd_ADQ_DataFifo_AFE_Diff_0",
+            "xci_path": "ip\\kria_bd_ADQ_DataFifo_AFE_Diff_0\\kria_bd_ADQ_DataFifo_AFE_Diff_0.xci",
             "inst_hier_path": "AXI_DMA_Real_Diff/ADQ_DataFifo_AFE_Diff"
           },
           "axi_dma_afe_diff": {
             "vlnv": "xilinx.com:ip:axi_dma:7.1",
-            "xci_name": "kria_bd_axi_dma_afe_1",
-            "xci_path": "ip\\kria_bd_axi_dma_afe_1\\kria_bd_axi_dma_afe_1.xci",
+            "xci_name": "kria_bd_axi_dma_afe_diff_0",
+            "xci_path": "ip\\kria_bd_axi_dma_afe_diff_0\\kria_bd_axi_dma_afe_diff_0.xci",
             "inst_hier_path": "AXI_DMA_Real_Diff/axi_dma_afe_diff",
             "parameters": {
               "c_include_mm2s": {
