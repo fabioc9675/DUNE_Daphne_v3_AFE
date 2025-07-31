@@ -1,10 +1,10 @@
 ###################### Raspberry Pi GPIO Header #######################
 #### AXI GPIO ###
-#set_property PACKAGE_PIN AD15 [get_ports {rpi_gpio_tri_io[0]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {rpi_gpio_tri_io[0]}]
+set_property PACKAGE_PIN AD15 [get_ports {uf_leds_tri_io[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uf_leds_tri_io[0]}]
 
-#set_property PACKAGE_PIN AD14 [get_ports {rpi_gpio_tri_io[1]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {rpi_gpio_tri_io[1]}]
+set_property PACKAGE_PIN AD14 [get_ports {uf_leds_tri_io[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uf_leds_tri_io[1]}]
 
 #set_property PACKAGE_PIN AE15 [get_ports {rpi_gpio_tri_io[2]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {rpi_gpio_tri_io[2]}]

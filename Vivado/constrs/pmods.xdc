@@ -88,11 +88,11 @@
 #set_property PACKAGE_PIN AD12 [get_ports {pmod4_io_tri_io[1]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {pmod4_io_tri_io[1]}]
 
-#set_property PACKAGE_PIN AE10 [get_ports {pmod4_io_tri_io[2]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {pmod4_io_tri_io[2]}]
+set_property PACKAGE_PIN AE10 [get_ports {uf_leds_tri_io[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uf_leds_tri_io[0]}]
 
-#set_property PACKAGE_PIN AF10 [get_ports {pmod4_io_tri_io[3]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {pmod4_io_tri_io[3]}]
+set_property PACKAGE_PIN AF10 [get_ports {uf_leds_tri_io[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uf_leds_tri_io[1]}]
 
 ###################### PMOD 3 Lower ###################################
 #set_property PACKAGE_PIN AD11 [get_ports {pmod4_io_tri_io[4]}]

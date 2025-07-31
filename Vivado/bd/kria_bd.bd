@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x73744AADDF1747D1",
+      "boundary_crc": "0x19B4DCCF76B557DA",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../AFE_Serdes.gen/sources_1/bd/kria_bd",
       "name": "kria_bd",
@@ -58,8 +58,8 @@
         "axi_dma_afe_diff": ""
       },
       "sine_wave_gen_0": "",
-      "ADC_AFE_Diff_interfa_0": "",
-      "ADC_AFE_interface_0": ""
+      "ADC_AFE_interface_0": "",
+      "fclk_lvds_receiver_0": ""
     },
     "interface_ports": {
       "afe_gpio_ctrl": {
@@ -159,17 +159,14 @@
       "data_in": {
         "direction": "I"
       },
-      "data_in_p": {
-        "direction": "I"
-      },
       "fclk_in_n": {
         "direction": "I"
       },
       "fclk_in_p": {
         "direction": "I"
       },
-      "data_in_n": {
-        "direction": "I"
+      "uf_led_0": {
+        "direction": "O"
       }
     },
     "components": {
@@ -5348,43 +5345,6 @@
           }
         }
       },
-      "ADC_AFE_Diff_interfa_0": {
-        "vlnv": "xilinx.com:module_ref:ADC_AFE_Diff_interface:1.0",
-        "xci_name": "kria_bd_ADC_AFE_Diff_interfa_0_0",
-        "xci_path": "ip\\kria_bd_ADC_AFE_Diff_interfa_0_0\\kria_bd_ADC_AFE_Diff_interfa_0_0.xci",
-        "inst_hier_path": "ADC_AFE_Diff_interfa_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "ADC_AFE_Diff_interface",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "fclk_p": {
-            "direction": "I"
-          },
-          "fclk_n": {
-            "direction": "I"
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "data_p": {
-            "direction": "I"
-          },
-          "data_n": {
-            "direction": "I"
-          },
-          "fclk_out": {
-            "direction": "O"
-          },
-          "dataOut": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          }
-        }
-      },
       "ADC_AFE_interface_0": {
         "vlnv": "xilinx.com:module_ref:ADC_AFE_interface:1.0",
         "xci_name": "kria_bd_ADC_AFE_interface_0_0",
@@ -5415,6 +5375,28 @@
             "right": "0"
           }
         }
+      },
+      "fclk_lvds_receiver_0": {
+        "vlnv": "xilinx.com:module_ref:fclk_lvds_receiver:1.0",
+        "xci_name": "kria_bd_fclk_lvds_receiver_0_0",
+        "xci_path": "ip\\kria_bd_fclk_lvds_receiver_0_0\\kria_bd_fclk_lvds_receiver_0_0.xci",
+        "inst_hier_path": "fclk_lvds_receiver_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "fclk_lvds_receiver",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "fclk_in_p": {
+            "direction": "I"
+          },
+          "fclk_in_n": {
+            "direction": "I"
+          },
+          "led": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -5436,7 +5418,7 @@
           "Axi_DMA/M_AXI_S2MM"
         ]
       },
-      "axi_gpio_0_GPIO": {
+      "SlowControl_uf_leds": {
         "interface_ports": [
           "uf_leds",
           "SlowControl/uf_leds"
@@ -5516,12 +5498,6 @@
       }
     },
     "nets": {
-      "ADC_AFE_Diff_interfa_0_fclk_out": {
-        "ports": [
-          "ADC_AFE_Diff_interfa_0/fclk_out",
-          "AXI_DMA_Real_Diff/clk_adc"
-        ]
-      },
       "ADC_AFE_interface_0_dataOut": {
         "ports": [
           "ADC_AFE_interface_0/dataOut",
@@ -5544,7 +5520,8 @@
         "ports": [
           "Clock_Generator/clk_20M",
           "Axi_DMA/clk_adc",
-          "sine_wave_gen_0/clk"
+          "sine_wave_gen_0/clk",
+          "AXI_DMA_Real_Diff/clk_adc"
         ]
       },
       "axi_dma_afe_s2mm_introut": {
@@ -5606,46 +5583,34 @@
           "ps8_0_axi_periph/M07_ACLK"
         ]
       },
-      "data_in_1": {
-        "ports": [
-          "ADC_AFE_Diff_interfa_0/dataOut",
-          "AXI_DMA_Real_Diff/data_in"
-        ]
-      },
-      "data_n_0_1": {
-        "ports": [
-          "data_in_n",
-          "ADC_AFE_Diff_interfa_0/data_n"
-        ]
-      },
       "data_p_0_1": {
         "ports": [
           "data_in",
           "ADC_AFE_interface_0/data_p"
         ]
       },
-      "data_p_0_2": {
-        "ports": [
-          "data_in_p",
-          "ADC_AFE_Diff_interfa_0/data_p"
-        ]
-      },
-      "fclk_n_0_1": {
+      "fclk_in_n_1": {
         "ports": [
           "fclk_in_n",
-          "ADC_AFE_Diff_interfa_0/fclk_n"
+          "fclk_lvds_receiver_0/fclk_in_n"
+        ]
+      },
+      "fclk_in_p_1": {
+        "ports": [
+          "fclk_in_p",
+          "fclk_lvds_receiver_0/fclk_in_p"
+        ]
+      },
+      "fclk_lvds_receiver_0_led": {
+        "ports": [
+          "fclk_lvds_receiver_0/led",
+          "uf_led_0"
         ]
       },
       "fclk_p_0_1": {
         "ports": [
           "fclk_in",
           "ADC_AFE_interface_0/fclk_p"
-        ]
-      },
-      "fclk_p_0_2": {
-        "ports": [
-          "fclk_in_p",
-          "ADC_AFE_Diff_interfa_0/fclk_p"
         ]
       },
       "io1_i_0_1": {
@@ -5678,14 +5643,14 @@
       "sine_wave_gen_0_sine_out": {
         "ports": [
           "sine_wave_gen_0/sine_out",
-          "Axi_DMA/data_in"
+          "Axi_DMA/data_in",
+          "AXI_DMA_Real_Diff/data_in"
         ]
       },
       "xlconstant_0_dout": {
         "ports": [
           "xlconstant_0/dout",
           "sine_wave_gen_0/rst",
-          "ADC_AFE_Diff_interfa_0/rst",
           "ADC_AFE_interface_0/rst"
         ]
       },
