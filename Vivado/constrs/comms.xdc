@@ -67,6 +67,7 @@ set_property DIFF_TERM TRUE [get_ports {data_in_p data_in_n}]
 #set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/ADC_AFE_Diff_interfa_0/U0/IBUFDS_fclk/O] 
 #set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/ADC_AFE_Diff_interfa_0/fclk_out]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/fclk_lvds_receiver_0/U0/IBUFDS_inst/O]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/fclk_lvds_receiver_1/U0/IBUFDS_inst/O]
 
 
 ##################### AFE1_AFE2_SPI Interface ##############################

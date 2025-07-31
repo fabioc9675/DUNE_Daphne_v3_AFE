@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x19B4DCCF76B557DA",
+      "boundary_crc": "0x8DCAC9F1AA6FBB6C",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../AFE_Serdes.gen/sources_1/bd/kria_bd",
       "name": "kria_bd",
@@ -59,7 +59,8 @@
       },
       "sine_wave_gen_0": "",
       "ADC_AFE_interface_0": "",
-      "fclk_lvds_receiver_0": ""
+      "fclk_lvds_receiver_0": "",
+      "fclk_lvds_receiver_1": ""
     },
     "interface_ports": {
       "afe_gpio_ctrl": {
@@ -167,6 +168,15 @@
       },
       "uf_led_0": {
         "direction": "O"
+      },
+      "uf_led_1": {
+        "direction": "O"
+      },
+      "data_in_p": {
+        "direction": "I"
+      },
+      "data_in_n": {
+        "direction": "I"
       }
     },
     "components": {
@@ -5397,6 +5407,28 @@
             "direction": "O"
           }
         }
+      },
+      "fclk_lvds_receiver_1": {
+        "vlnv": "xilinx.com:module_ref:fclk_lvds_receiver:1.0",
+        "xci_name": "kria_bd_fclk_lvds_receiver_1_0",
+        "xci_path": "ip\\kria_bd_fclk_lvds_receiver_1_0\\kria_bd_fclk_lvds_receiver_1_0.xci",
+        "inst_hier_path": "fclk_lvds_receiver_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "fclk_lvds_receiver",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "fclk_in_p": {
+            "direction": "I"
+          },
+          "fclk_in_n": {
+            "direction": "I"
+          },
+          "led": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -5589,10 +5621,22 @@
           "ADC_AFE_interface_0/data_p"
         ]
       },
+      "fclk_in_n_0_1": {
+        "ports": [
+          "data_in_n",
+          "fclk_lvds_receiver_1/fclk_in_n"
+        ]
+      },
       "fclk_in_n_1": {
         "ports": [
           "fclk_in_n",
           "fclk_lvds_receiver_0/fclk_in_n"
+        ]
+      },
+      "fclk_in_p_0_1": {
+        "ports": [
+          "data_in_p",
+          "fclk_lvds_receiver_1/fclk_in_p"
         ]
       },
       "fclk_in_p_1": {
@@ -5605,6 +5649,12 @@
         "ports": [
           "fclk_lvds_receiver_0/led",
           "uf_led_0"
+        ]
+      },
+      "fclk_lvds_receiver_1_led": {
+        "ports": [
+          "fclk_lvds_receiver_1/led",
+          "uf_led_1"
         ]
       },
       "fclk_p_0_1": {

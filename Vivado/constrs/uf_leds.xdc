@@ -8,3 +8,6 @@
 set_property PACKAGE_PIN E8 [get_ports {uf_led_0}]
 set_property IOSTANDARD LVCMOS18 [get_ports {uf_led_0}]
 
+ set_property PACKAGE_PIN F8 [get_ports {uf_led_1}]
+ set_property IOSTANDARD LVCMOS18 [get_ports {uf_led_1}]
+
