@@ -59,8 +59,11 @@
       },
       "sine_wave_gen_0": "",
       "ADC_AFE_interface_0": "",
-      "fclk_lvds_receiver_0": "",
-      "fclk_lvds_receiver_1": ""
+      "afe_clk_data_input_0": "",
+      "rst_const": "",
+      "led_counter_0": "",
+      "led_counter_1": "",
+      "afe_dclk_source_0": ""
     },
     "interface_ports": {
       "afe_gpio_ctrl": {
@@ -5386,14 +5389,14 @@
           }
         }
       },
-      "fclk_lvds_receiver_0": {
-        "vlnv": "xilinx.com:module_ref:fclk_lvds_receiver:1.0",
-        "xci_name": "kria_bd_fclk_lvds_receiver_0_0",
-        "xci_path": "ip\\kria_bd_fclk_lvds_receiver_0_0\\kria_bd_fclk_lvds_receiver_0_0.xci",
-        "inst_hier_path": "fclk_lvds_receiver_0",
+      "afe_clk_data_input_0": {
+        "vlnv": "xilinx.com:module_ref:afe_clk_data_input:1.0",
+        "xci_name": "kria_bd_afe_clk_data_input_0_0",
+        "xci_path": "ip\\kria_bd_afe_clk_data_input_0_0\\kria_bd_afe_clk_data_input_0_0.xci",
+        "inst_hier_path": "afe_clk_data_input_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "fclk_lvds_receiver",
+          "ref_name": "afe_clk_data_input",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -5402,30 +5405,111 @@
           },
           "fclk_in_n": {
             "direction": "I"
+          },
+          "data_in_p": {
+            "direction": "I"
+          },
+          "data_in_n": {
+            "direction": "I"
+          },
+          "fclk_out": {
+            "direction": "O"
+          },
+          "data_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "rst_const": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "kria_bd_xlconstant_1_0",
+        "xci_path": "ip\\kria_bd_xlconstant_1_0\\kria_bd_xlconstant_1_0.xci",
+        "inst_hier_path": "rst_const",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
+      "led_counter_0": {
+        "vlnv": "xilinx.com:module_ref:led_counter:1.0",
+        "xci_name": "kria_bd_led_counter_0_0",
+        "xci_path": "ip\\kria_bd_led_counter_0_0\\kria_bd_led_counter_0_0.xci",
+        "inst_hier_path": "led_counter_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "led_counter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
           },
           "led": {
             "direction": "O"
           }
         }
       },
-      "fclk_lvds_receiver_1": {
-        "vlnv": "xilinx.com:module_ref:fclk_lvds_receiver:1.0",
-        "xci_name": "kria_bd_fclk_lvds_receiver_1_0",
-        "xci_path": "ip\\kria_bd_fclk_lvds_receiver_1_0\\kria_bd_fclk_lvds_receiver_1_0.xci",
-        "inst_hier_path": "fclk_lvds_receiver_1",
+      "led_counter_1": {
+        "vlnv": "xilinx.com:module_ref:led_counter:1.0",
+        "xci_name": "kria_bd_led_counter_1_0",
+        "xci_path": "ip\\kria_bd_led_counter_1_0\\kria_bd_led_counter_1_0.xci",
+        "inst_hier_path": "led_counter_1",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "fclk_lvds_receiver",
+          "ref_name": "led_counter",
           "boundary_crc": "0x0"
         },
         "ports": {
-          "fclk_in_p": {
+          "rst": {
+            "type": "rst",
             "direction": "I"
           },
-          "fclk_in_n": {
-            "direction": "I"
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
           },
           "led": {
+            "direction": "O"
+          }
+        }
+      },
+      "afe_dclk_source_0": {
+        "vlnv": "xilinx.com:module_ref:afe_dclk_source:1.0",
+        "xci_name": "kria_bd_afe_dclk_source_0_0",
+        "xci_path": "ip\\kria_bd_afe_dclk_source_0_0\\kria_bd_afe_dclk_source_0_0.xci",
+        "inst_hier_path": "afe_dclk_source_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "afe_dclk_source",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "fclk_in": {
+            "direction": "I"
+          },
+          "dclk_out": {
             "direction": "O"
           }
         }
@@ -5556,6 +5640,19 @@
           "AXI_DMA_Real_Diff/clk_adc"
         ]
       },
+      "afe_clk_data_input_0_fclk_out": {
+        "ports": [
+          "afe_clk_data_input_0/fclk_out",
+          "led_counter_0/clk",
+          "afe_dclk_source_0/fclk_in"
+        ]
+      },
+      "afe_dclk_source_0_dclk_out": {
+        "ports": [
+          "afe_dclk_source_0/dclk_out",
+          "led_counter_1/clk"
+        ]
+      },
       "axi_dma_afe_s2mm_introut": {
         "ports": [
           "Axi_DMA/s2mm_introut",
@@ -5615,46 +5712,34 @@
           "ps8_0_axi_periph/M07_ACLK"
         ]
       },
+      "data_in_n_1": {
+        "ports": [
+          "data_in_n",
+          "afe_clk_data_input_0/data_in_n"
+        ]
+      },
+      "data_in_p_1": {
+        "ports": [
+          "data_in_p",
+          "afe_clk_data_input_0/data_in_p"
+        ]
+      },
       "data_p_0_1": {
         "ports": [
           "data_in",
           "ADC_AFE_interface_0/data_p"
         ]
       },
-      "fclk_in_n_0_1": {
-        "ports": [
-          "data_in_n",
-          "fclk_lvds_receiver_1/fclk_in_n"
-        ]
-      },
       "fclk_in_n_1": {
         "ports": [
           "fclk_in_n",
-          "fclk_lvds_receiver_0/fclk_in_n"
-        ]
-      },
-      "fclk_in_p_0_1": {
-        "ports": [
-          "data_in_p",
-          "fclk_lvds_receiver_1/fclk_in_p"
+          "afe_clk_data_input_0/fclk_in_n"
         ]
       },
       "fclk_in_p_1": {
         "ports": [
           "fclk_in_p",
-          "fclk_lvds_receiver_0/fclk_in_p"
-        ]
-      },
-      "fclk_lvds_receiver_0_led": {
-        "ports": [
-          "fclk_lvds_receiver_0/led",
-          "uf_led_0"
-        ]
-      },
-      "fclk_lvds_receiver_1_led": {
-        "ports": [
-          "fclk_lvds_receiver_1/led",
-          "uf_led_1"
+          "afe_clk_data_input_0/fclk_in_p"
         ]
       },
       "fclk_p_0_1": {
@@ -5667,6 +5752,18 @@
         "ports": [
           "afe0_sdout",
           "SlowControl/afe0_sdout"
+        ]
+      },
+      "led_counter_0_led": {
+        "ports": [
+          "led_counter_0/led",
+          "uf_led_1"
+        ]
+      },
+      "led_counter_1_led": {
+        "ports": [
+          "led_counter_1/led",
+          "uf_led_0"
         ]
       },
       "proc_sys_reset_2_peripheral_aresetn": {
@@ -5688,6 +5785,14 @@
           "ps8_0_axi_periph/M06_ARESETN",
           "AXI_DMA_Real_Diff/m00_axis_aresetn",
           "ps8_0_axi_periph/M07_ARESETN"
+        ]
+      },
+      "rst_const_dout": {
+        "ports": [
+          "rst_const/dout",
+          "led_counter_0/rst",
+          "led_counter_1/rst",
+          "afe_dclk_source_0/rst"
         ]
       },
       "sine_wave_gen_0_sine_out": {
