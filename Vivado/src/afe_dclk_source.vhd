@@ -122,6 +122,5 @@ begin
             I => dclk_mmcm,
             O => dclk_out
         );
-
-
+        
 end Behavioral;

@@ -92,7 +92,6 @@ Como se observa, por cada ciclo de  reloj del FCLK se generan 7 ciclos de reloj 
 
 ### Calculo de la frecuencia
 
-
 <img src="images/freqs.png" alt="1704944064750" height="700"/>
 
 2^24 = 16777216
@@ -100,3 +99,17 @@ Como se observa, por cada ciclo de  reloj del FCLK se generan 7 ciclos de reloj 
 para la señal de 1.192 Hz dio 19998441.4 conteos, es decir que la señal es de aproximadamente 39996882.944 Hz = 40 MHz
 
 para la señal de 8.3358 Hz dio 139851517.133 conteos, es decir que la señal es de aproximadamente 279703034.266 Hz = 280 MHz = 40 MHz * 7
+
+## Prueba simulacion deserializador
+
+Se realizo el montaje de un proyecto basico solo con la informacion de deserializacion
+
+<img src="images/sim_blockdesign.png" alt="1704944064750" height="400"/>
+
+A partir de este block desgin se obtuvo el siguiente resultado de simulacion
+
+<img src="images/simulation.png" alt="1704944064750" height="400"/>
+
+Al realizar la prueba con la implementacion se obtuvo la siguiente grafica
+
+<img src="images/rampa.png" alt="1704944064750" height="400"/>
