@@ -1,0 +1,251 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x425F4A85425F4A85",
+      "device": "xck26-sfvc784-2LV-c",
+      "gen_directory": "../../../../AFE_iddr_sim.gen/sources_1/bd/kria_bd",
+      "name": "kria_sim_bd",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "None",
+      "tool_version": "2022.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "afe_clk_data_input_0": "",
+      "afe_dclk_source_0": "",
+      "rst_const": "",
+      "afe_deserializer_0": ""
+    },
+    "ports": {
+      "fclk_in_n": {
+        "direction": "I"
+      },
+      "fclk_in_p": {
+        "direction": "I"
+      },
+      "data_in_p": {
+        "direction": "I"
+      },
+      "data_in_n": {
+        "direction": "I"
+      },
+      "dclk_out_0": {
+        "direction": "O"
+      },
+      "fclk_out_0": {
+        "direction": "O"
+      },
+      "data_out_0": {
+        "direction": "O"
+      },
+      "sample_0": {
+        "direction": "O",
+        "left": "15",
+        "right": "0"
+      },
+      "valid_0": {
+        "direction": "O"
+      },
+      "Q_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "T_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      }
+    },
+    "components": {
+      "afe_clk_data_input_0": {
+        "vlnv": "xilinx.com:module_ref:afe_clk_data_input:1.0",
+        "xci_name": "kria_bd_afe_clk_data_input_0_0",
+        "xci_path": "ip\\kria_bd_afe_clk_data_input_0_0\\kria_bd_afe_clk_data_input_0_0.xci",
+        "inst_hier_path": "afe_clk_data_input_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "afe_clk_data_input",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "fclk_in_p": {
+            "direction": "I"
+          },
+          "fclk_in_n": {
+            "direction": "I"
+          },
+          "data_in_p": {
+            "direction": "I"
+          },
+          "data_in_n": {
+            "direction": "I"
+          },
+          "fclk_out": {
+            "direction": "O"
+          },
+          "data_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "afe_dclk_source_0": {
+        "vlnv": "xilinx.com:module_ref:afe_dclk_source:1.0",
+        "xci_name": "kria_bd_afe_dclk_source_0_0",
+        "xci_path": "ip\\kria_bd_afe_dclk_source_0_0\\kria_bd_afe_dclk_source_0_0.xci",
+        "inst_hier_path": "afe_dclk_source_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "afe_dclk_source",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "fclk_in": {
+            "direction": "I"
+          },
+          "dclk_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "rst_const": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "kria_bd_xlconstant_0_0",
+        "xci_path": "ip\\kria_bd_xlconstant_0_0\\kria_bd_xlconstant_0_0.xci",
+        "inst_hier_path": "rst_const",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
+      "afe_deserializer_0": {
+        "vlnv": "xilinx.com:module_ref:afe_deserializer:1.0",
+        "xci_name": "kria_bd_afe_deserializer_0_0",
+        "xci_path": "ip\\kria_bd_afe_deserializer_0_0\\kria_bd_afe_deserializer_0_0.xci",
+        "inst_hier_path": "afe_deserializer_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "afe_deserializer",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "fclk": {
+            "direction": "I"
+          },
+          "dclk": {
+            "direction": "I"
+          },
+          "data_in": {
+            "direction": "I"
+          },
+          "sample": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "valid": {
+            "direction": "O"
+          },
+          "Q": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "T": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "afe_clk_data_input_0_data_out": {
+        "ports": [
+          "afe_clk_data_input_0/data_out",
+          "data_out_0",
+          "afe_deserializer_0/data_in"
+        ]
+      },
+      "afe_clk_data_input_0_fclk_out": {
+        "ports": [
+          "afe_clk_data_input_0/fclk_out",
+          "fclk_out_0",
+          "afe_dclk_source_0/fclk_in",
+          "afe_deserializer_0/fclk"
+        ]
+      },
+      "afe_dclk_source_0_dclk_out": {
+        "ports": [
+          "afe_dclk_source_0/dclk_out",
+          "dclk_out_0",
+          "afe_deserializer_0/dclk"
+        ]
+      },
+      "afe_deserializer_0_Q": {
+        "ports": [
+          "afe_deserializer_0/Q",
+          "Q_0"
+        ]
+      },
+      "afe_deserializer_0_T": {
+        "ports": [
+          "afe_deserializer_0/T",
+          "T_0"
+        ]
+      },
+      "afe_deserializer_0_sample": {
+        "ports": [
+          "afe_deserializer_0/sample",
+          "sample_0"
+        ]
+      },
+      "afe_deserializer_0_valid": {
+        "ports": [
+          "afe_deserializer_0/valid",
+          "valid_0"
+        ]
+      },
+      "data_in_n_0_1": {
+        "ports": [
+          "data_in_n",
+          "afe_clk_data_input_0/data_in_n"
+        ]
+      },
+      "data_in_p_0_1": {
+        "ports": [
+          "data_in_p",
+          "afe_clk_data_input_0/data_in_p"
+        ]
+      },
+      "fclk_in_n_0_1": {
+        "ports": [
+          "fclk_in_n",
+          "afe_clk_data_input_0/fclk_in_n"
+        ]
+      },
+      "fclk_in_p_0_1": {
+        "ports": [
+          "fclk_in_p",
+          "afe_clk_data_input_0/fclk_in_p"
+        ]
+      },
+      "rst_const_dout": {
+        "ports": [
+          "rst_const/dout",
+          "afe_dclk_source_0/rst",
+          "afe_deserializer_0/rst"
+        ]
+      }
+    }
+  }
+}

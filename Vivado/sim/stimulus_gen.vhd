@@ -27,10 +27,10 @@ begin
         elsif rising_edge(fclk) then
             -- Load next 14-bit pattern every new FCLK
             if toggle = '0' then
-                shift_reg <= "01110101011001";  -- Change pattern per FCLK if desired
+                shift_reg <= "11111110000000";  -- Change pattern per FCLK if desired
                 toggle <= '1';
             else
-                shift_reg <= "11001010011100";
+                shift_reg <= "00000001111111";
                 toggle <= '0';
             end if;
         end if;

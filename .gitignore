@@ -131,7 +131,7 @@ xelab.*
 xsim.*
 xvlog.*
 *.cache
-*.sim
+!*.sim
 *.runs
 *.hw
 *.backup.*

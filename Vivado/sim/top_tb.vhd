@@ -57,7 +57,7 @@ begin
     );
     
     
-    dut : entity work.kria_bd_wrapper
+    dut : entity work.kria_sim_bd_wrapper
     port map (
         fclk_in_p  => clk_p,
         fclk_in_n  => clk_n,
