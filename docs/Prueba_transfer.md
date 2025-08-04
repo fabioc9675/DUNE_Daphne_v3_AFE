@@ -178,3 +178,10 @@ Medición de sync
 Medición de toggle
 
 <img src="images/toggle.png" alt="1704944064750" width="900"/>
+
+
+### Prueba de alineacion con ILA
+
+Se obtuvo una primera buena alineacion de los datos con un delay de 1 y un slice de 2
+
+<img src="images/sucess_1.png" alt="1704944064750" width="900"/>
