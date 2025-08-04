@@ -17,12 +17,13 @@
       "system_ila_0": "",
       "led_counter_0": "",
       "led_counter_1": "",
-      "afe_clk_data_input_0": "",
       "afe_deserializer_0": "",
       "delay_const_0": "",
       "sel_const_0": "",
       "afe_slice_data_0": "",
-      "system_ila_1": ""
+      "system_ila_1": "",
+      "afe_fclk_single_0": "",
+      "afe_data_single_0": ""
     },
     "ports": {
       "fclk_in_n": {
@@ -47,8 +48,8 @@
     "components": {
       "afe_dclk_source_0": {
         "vlnv": "xilinx.com:module_ref:afe_dclk_source:1.0",
-        "xci_name": "kria_bd_afe_dclk_source_0_0",
-        "xci_path": "ip\\kria_bd_afe_dclk_source_0_0\\kria_bd_afe_dclk_source_0_0.xci",
+        "xci_name": "kria_sim_bd_afe_dclk_source_0_0",
+        "xci_path": "ip\\kria_sim_bd_afe_dclk_source_0_0\\kria_sim_bd_afe_dclk_source_0_0.xci",
         "inst_hier_path": "afe_dclk_source_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -70,8 +71,8 @@
       },
       "rst_const": {
         "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "kria_bd_xlconstant_0_0",
-        "xci_path": "ip\\kria_bd_xlconstant_0_0\\kria_bd_xlconstant_0_0.xci",
+        "xci_name": "kria_sim_bd_rst_const_0",
+        "xci_path": "ip\\kria_sim_bd_rst_const_0\\kria_sim_bd_rst_const_0.xci",
         "inst_hier_path": "rst_const",
         "parameters": {
           "CONST_VAL": {
@@ -128,8 +129,8 @@
       },
       "system_ila_0": {
         "vlnv": "xilinx.com:ip:system_ila:1.1",
-        "xci_name": "kria_sim_bd_system_ila_0_1",
-        "xci_path": "ip\\kria_sim_bd_system_ila_0_1\\kria_sim_bd_system_ila_0_1.xci",
+        "xci_name": "kria_sim_bd_system_ila_0_0",
+        "xci_path": "ip\\kria_sim_bd_system_ila_0_0\\kria_sim_bd_system_ila_0_0.xci",
         "inst_hier_path": "system_ila_0",
         "parameters": {
           "C_DATA_DEPTH": {
@@ -233,41 +234,10 @@
           }
         }
       },
-      "afe_clk_data_input_0": {
-        "vlnv": "xilinx.com:module_ref:afe_clk_data_input:1.0",
-        "xci_name": "kria_bd_afe_clk_data_input_0_0",
-        "xci_path": "ip\\kria_bd_afe_clk_data_input_0_0\\kria_bd_afe_clk_data_input_0_0.xci",
-        "inst_hier_path": "afe_clk_data_input_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "afe_clk_data_input",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "fclk_in_p": {
-            "direction": "I"
-          },
-          "fclk_in_n": {
-            "direction": "I"
-          },
-          "data_in_p": {
-            "direction": "I"
-          },
-          "data_in_n": {
-            "direction": "I"
-          },
-          "fclk_out": {
-            "direction": "O"
-          },
-          "data_out": {
-            "direction": "O"
-          }
-        }
-      },
       "afe_deserializer_0": {
         "vlnv": "xilinx.com:module_ref:afe_deserializer:1.0",
-        "xci_name": "kria_bd_afe_deserializer_0_0",
-        "xci_path": "ip\\kria_bd_afe_deserializer_0_0\\kria_bd_afe_deserializer_0_0.xci",
+        "xci_name": "kria_sim_bd_afe_deserializer_0_0",
+        "xci_path": "ip\\kria_sim_bd_afe_deserializer_0_0\\kria_sim_bd_afe_deserializer_0_0.xci",
         "inst_hier_path": "afe_deserializer_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -310,8 +280,8 @@
       },
       "delay_const_0": {
         "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "kria_sim_bd_xlconstant_0_0",
-        "xci_path": "ip\\kria_sim_bd_xlconstant_0_0\\kria_sim_bd_xlconstant_0_0.xci",
+        "xci_name": "kria_sim_bd_delay_const_0_0",
+        "xci_path": "ip\\kria_sim_bd_delay_const_0_0\\kria_sim_bd_delay_const_0_0.xci",
         "inst_hier_path": "delay_const_0",
         "parameters": {
           "CONST_VAL": {
@@ -324,8 +294,8 @@
       },
       "sel_const_0": {
         "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "kria_sim_bd_xlconstant_0_1",
-        "xci_path": "ip\\kria_sim_bd_xlconstant_0_1\\kria_sim_bd_xlconstant_0_1.xci",
+        "xci_name": "kria_sim_bd_sel_const_0_0",
+        "xci_path": "ip\\kria_sim_bd_sel_const_0_0\\kria_sim_bd_sel_const_0_0.xci",
         "inst_hier_path": "sel_const_0",
         "parameters": {
           "CONST_VAL": {
@@ -395,6 +365,50 @@
             "value": "1"
           }
         }
+      },
+      "afe_fclk_single_0": {
+        "vlnv": "xilinx.com:module_ref:afe_fclk_single:1.0",
+        "xci_name": "kria_sim_bd_afe_fclk_single_0_0",
+        "xci_path": "ip\\kria_sim_bd_afe_fclk_single_0_0\\kria_sim_bd_afe_fclk_single_0_0.xci",
+        "inst_hier_path": "afe_fclk_single_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "afe_fclk_single",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "fclk_in_p": {
+            "direction": "I"
+          },
+          "fclk_in_n": {
+            "direction": "I"
+          },
+          "fclk_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "afe_data_single_0": {
+        "vlnv": "xilinx.com:module_ref:afe_data_single:1.0",
+        "xci_name": "kria_sim_bd_afe_data_single_0_0",
+        "xci_path": "ip\\kria_sim_bd_afe_data_single_0_0\\kria_sim_bd_afe_data_single_0_0.xci",
+        "inst_hier_path": "afe_data_single_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "afe_data_single",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "data_in_p": {
+            "direction": "I"
+          },
+          "data_in_n": {
+            "direction": "I"
+          },
+          "data_out": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
@@ -428,14 +442,14 @@
       },
       "afe_clk_data_input_0_data_out": {
         "ports": [
-          "afe_clk_data_input_0/data_out",
+          "afe_data_single_0/data_out",
           "system_ila_0/probe6",
           "afe_deserializer_0/data_in"
         ]
       },
       "afe_clk_data_input_0_fclk_out": {
         "ports": [
-          "afe_clk_data_input_0/fclk_out",
+          "afe_fclk_single_0/fclk_out",
           "afe_dclk_source_0/fclk_in",
           "clk_wiz_0/clk_in1",
           "led_counter_0/clk",
@@ -467,28 +481,28 @@
           "system_ila_0/clk"
         ]
       },
-      "data_in_n_0_1": {
+      "data_in_n_1": {
         "ports": [
           "data_in_n",
-          "afe_clk_data_input_0/data_in_n"
+          "afe_data_single_0/data_in_n"
         ]
       },
-      "data_in_p_0_1": {
+      "data_in_p_1": {
         "ports": [
           "data_in_p",
-          "afe_clk_data_input_0/data_in_p"
+          "afe_data_single_0/data_in_p"
         ]
       },
-      "fclk_in_n_0_1": {
+      "fclk_in_n_1": {
         "ports": [
           "fclk_in_n",
-          "afe_clk_data_input_0/fclk_in_n"
+          "afe_fclk_single_0/fclk_in_n"
         ]
       },
-      "fclk_in_p_0_1": {
+      "fclk_in_p_1": {
         "ports": [
           "fclk_in_p",
-          "afe_clk_data_input_0/fclk_in_p"
+          "afe_fclk_single_0/fclk_in_p"
         ]
       },
       "led_counter_0_led": {
