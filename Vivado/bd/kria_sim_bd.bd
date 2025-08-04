@@ -21,7 +21,8 @@
       "afe_deserializer_0": "",
       "delay_const_0": "",
       "sel_const_0": "",
-      "afe_slice_data_0": ""
+      "afe_slice_data_0": "",
+      "system_ila_1": ""
     },
     "ports": {
       "fclk_in_n": {
@@ -377,6 +378,23 @@
             "right": "0"
           }
         }
+      },
+      "system_ila_1": {
+        "vlnv": "xilinx.com:ip:system_ila:1.1",
+        "xci_name": "kria_sim_bd_system_ila_1_0",
+        "xci_path": "ip\\kria_sim_bd_system_ila_1_0\\kria_sim_bd_system_ila_1_0.xci",
+        "inst_hier_path": "system_ila_1",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "2048"
+          },
+          "C_MON_TYPE": {
+            "value": "NATIVE"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "1"
+          }
+        }
       }
     },
     "nets": {
@@ -423,7 +441,8 @@
           "led_counter_0/clk",
           "system_ila_0/probe4",
           "afe_deserializer_0/fclk",
-          "afe_slice_data_0/fclk"
+          "afe_slice_data_0/fclk",
+          "system_ila_1/clk"
         ]
       },
       "afe_dclk_source_0_dclk_out": {
@@ -438,7 +457,8 @@
       "afe_slice_data_0_data_out": {
         "ports": [
           "afe_slice_data_0/data_out",
-          "system_ila_0/probe7"
+          "system_ila_0/probe7",
+          "system_ila_1/probe0"
         ]
       },
       "clk_wiz_0_clk_out1": {

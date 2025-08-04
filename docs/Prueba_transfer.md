@@ -187,3 +187,6 @@ Medición de toggle
 Se obtuvo una primera buena alineacion de los datos con un delay de 1 y un slice de 2
 
 <img src="images/sucess_1.png" alt="1704944064750" width="900"/>
+
+
+<img src="images/Signal_ECG_sim.png" alt="1704944064750" width="900"/>
