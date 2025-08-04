@@ -86,13 +86,15 @@ CLKOUT0_DIVIDE_F => 3.0       -- 280 MHz output
 
 Se configuro el reloj a 40 MHz, se evalua l asincronia entre el FCLK y el DCLK generado con la primitiva MCMM2, a continuacion se muestra la imagen del resultado para los relojes haciendo conteos hasta 2^24
 
-![1704944064750](images/Reloj.png)
+
+<img src="images/Reloj.png" alt="1704944064750" width="900"/>
+
 
 Como se observa, por cada ciclo de  reloj del FCLK se generan 7 ciclos de reloj del DCLK.
 
 ### Calculo de la frecuencia
 
-<img src="images/freqs.png" alt="1704944064750" height="700"/>
+<img src="images/freqs.png" alt="1704944064750" width="900"/>
 
 2^24 = 16777216
 
@@ -104,15 +106,15 @@ para la señal de 8.3358 Hz dio 139851517.133 conteos, es decir que la señal es
 
 Se realizo el montaje de un proyecto basico solo con la informacion de deserializacion
 
-<img src="images/sim_blockdesign.png" alt="1704944064750" height="400"/>
+<img src="images/sim_blockdesign.png" alt="1704944064750" width="900"/>
 
 A partir de este block desgin se obtuvo el siguiente resultado de simulacion
 
-<img src="images/simulation.png" alt="1704944064750" height="400"/>
+<img src="images/simulation.png" alt="1704944064750" width="900"/>
 
 Al realizar la prueba con la implementacion se obtuvo la siguiente grafica
 
-<img src="images/rampa.png" alt="1704944064750" height="400"/>
+<img src="images/rampa.png" alt="1704944064750" width="900"/>
 
 
 ### Prueba de captura de datos de alineacion
@@ -165,7 +167,7 @@ Se observa un desalineamiento de dos bits en la información
 
 Medición de Rampa
 
-<img src="images/rampa_ILA.png" alt="1704944064750" height="500"/>
+<img src="images/rampa_ILA.png" alt="1704944064750" width="900"/>
 
 Medición de Deskew
 
