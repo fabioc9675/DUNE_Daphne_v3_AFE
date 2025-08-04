@@ -12,31 +12,54 @@ entity stimulus_gen is
     );
 end stimulus_gen;
 
+
 architecture Behavioral of stimulus_gen is
     type bit_array is array (0 to 13) of std_logic;
     signal shift_reg : bit_array := (others => '0');
     signal bit_idx   : integer range 0 to 13 := 0;
-    signal toggle    : std_logic := '0';
+    signal toggle    : integer := 0;
+
+    signal sync      : std_logic := '0';
 
 begin
-    -- Example shift pattern: 14 bits (e.g., 11001010011100)
+
+    -- Carga del patron en flanco de fclk
     process(rst, fclk)
     begin
         if rst = '1' then
             shift_reg <= "11001010011100";
+            sync <= '1';
         elsif rising_edge(fclk) then
-            -- Load next 14-bit pattern every new FCLK
-            if toggle = '0' then
-                shift_reg <= "11111110000000";  -- Change pattern per FCLK if desired
-                toggle <= '1';
+            if toggle = 0 then
+                shift_reg <= "11111100000001";
+                toggle <= 1;
+            elsif toggle = 1 then
+                shift_reg <= "11111100000001";
+                toggle <= 2;
+            elsif toggle = 2 then
+                shift_reg <= "11111111111111";
+                toggle <= 3;
+            elsif toggle = 3 then
+                shift_reg <= "11111111111110";
+                toggle <= 4;
+            elsif toggle = 4 then
+                shift_reg <= "00000000000000";
+                toggle <= 5;
+            elsif toggle = 5 then
+                shift_reg <= "00000000000001";
+                toggle <= 6;
+            elsif toggle = 6 then
+                shift_reg <= "01010101010101";
+                toggle <= 7;
             else
-                shift_reg <= "00000001111111";
-                toggle <= '0';
+                shift_reg <= "01010101010101";
+                toggle <= 0;
             end if;
+            sync <= '1';  -- activa la sincronizacion
         end if;
     end process;
 
-    -- DDR simulation: changes data on both edges of DCLK
+    -- Simulacion DDR: genera senal en ambos flancos de DCLK
     process(rst, dclk)
     begin
         if rst = '1' then
@@ -44,9 +67,62 @@ begin
             data_out_p <= '0';
             data_out_n <= '1';
         elsif rising_edge(dclk) then
+            if sync = '1' then
+                bit_idx <= 0;      -- reinicia justo al inicio del frame
+                sync <= '0';       -- limpiar el pulso de sync
+            else
+                bit_idx <= (bit_idx + 1) mod 14;
+            end if;
+
             data_out_p <= shift_reg(bit_idx);
             data_out_n <= not shift_reg(bit_idx);
-            bit_idx <= (bit_idx + 1) mod 14;         
         end if;
     end process;
+
 end Behavioral;
+
+
+
+
+
+
+
+
+-- architecture Behavioral of stimulus_gen is
+--     type bit_array is array (0 to 13) of std_logic;
+--     signal shift_reg : bit_array := (others => '0');
+--     signal bit_idx   : integer range 0 to 13 := 0;
+--     signal toggle    : std_logic := '0';
+
+-- begin
+--     -- Example shift pattern: 14 bits (e.g., 11001010011100)
+--     process(rst, fclk)
+--     begin
+--         if rst = '1' then
+--             shift_reg <= "11001010011100";
+--         elsif rising_edge(fclk) then
+--             -- Load next 14-bit pattern every new FCLK
+--             if toggle = '0' then
+--                 shift_reg <= "11111110000000";  -- Change pattern per FCLK if desired
+--                 toggle <= '1';
+--             else
+--                 shift_reg <= "00000001111111";
+--                 toggle <= '0';
+--             end if;
+--         end if;
+--     end process;
+
+--     -- DDR simulation: changes data on both edges of DCLK
+--     process(rst, dclk)
+--     begin
+--         if rst = '1' then
+--             bit_idx <= 0;
+--             data_out_p <= '0';
+--             data_out_n <= '1';
+--         elsif rising_edge(dclk) then
+--             data_out_p <= shift_reg(bit_idx);
+--             data_out_n <= not shift_reg(bit_idx);
+--             bit_idx <= (bit_idx + 1) mod 14;         
+--         end if;
+--     end process;
+-- end Behavioral;

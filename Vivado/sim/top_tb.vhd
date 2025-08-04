@@ -27,8 +27,8 @@ architecture Behavioral of top_tb is
     signal dclk_s       : std_logic;
     signal data_s       : std_logic;
     
-    signal Q_o          : std_logic_vector ( 7 downto 0 );
-    signal T_o          : std_logic_vector ( 7 downto 0 );
+    signal Q_o          : std_logic_vector (15 downto 0);
+    signal T_o          : std_logic_vector (15 downto 0);
     
     signal salida       : std_logic_vector (15 downto 0);
     
@@ -50,7 +50,7 @@ begin
     stimulus_gen : entity work.stimulus_gen
     port map(
         dclk       => clk_gen,
-        fclk       => fclk_s,
+        fclk       => clk_p,
         rst        => '0',
         data_out_p => data_p,
         data_out_n => data_n
@@ -62,16 +62,11 @@ begin
         fclk_in_p  => clk_p,
         fclk_in_n  => clk_n,
         data_in_p  => data_p,
-        data_in_n  => data_n,   
-        data_out_0 => data_s, 
-        dclk_out_0 => dclk_s,
-        fclk_out_0 => fclk_s,
-        Q_0        => Q_o,
-        T_0        => T_o,        
-        sample_0   => salida,
-        valid_0    => d_valid
+        data_in_n  => data_n,
+        uf_led_0 => open,
+        uf_led_1 => open
     );
-
+    
 
 end Behavioral;
 

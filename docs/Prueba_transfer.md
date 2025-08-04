@@ -113,3 +113,68 @@ A partir de este block desgin se obtuvo el siguiente resultado de simulacion
 Al realizar la prueba con la implementacion se obtuvo la siguiente grafica
 
 <img src="images/rampa.png" alt="1704944064750" height="400"/>
+
+
+### Prueba de captura de datos de alineacion
+
+Se hara un protocolo para mirar los datos de alineacion y evaluar el corrimiento de los datos
+
+```python
+# prueba de todos ceros
+my_library.HAL_AFE_All0sTest(my_library.hafe0)
+my_library.HAL_AFEWriteRegister(hafe0, 4, ctypes.byref((ctypes.c_uint16)(0x18)))
+print("Prueba de ceros")
+prueba_data()
+print("---------------------------------------------------")# prueba de todos ceros
+```
+
+
+```
+Prueba de ceros
+['00000000000000', '00000000000000', '00000000000000', '00000000000000', '00000000000000', '00000000000000']
+---------------------------------------------------
+```
+
+```
+Prueba de unos
+['11111111111111', '11111111111111', '11111111111111', '11111111111111', '11111111111111', '11111111111111']
+---------------------------------------------------
+```
+
+```
+Prueba de toggle
+['00000000000011', '11111111111100', '00000000000011', '11111111111100', '00000000000011', '11111111111100']
+---------------------------------------------------
+```
+
+```
+Prueba de deskew
+['01010101010101', '01010101010101', '01010101010101', '01010101010101', '01010101010101', '01010101010101']
+---------------------------------------------------
+```
+
+```
+Prueba de sync
+['11111000000011', '11111000000011', '11111000000011', '11111000000011', '11111000000011', '11111000000011']
+---------------------------------------------------
+```
+
+Se observa un desalineamiento de dos bits en la información
+
+### Mediciones con la FPGA usando ILA
+
+Medición de Rampa
+
+<img src="images/rampa_ILA.png" alt="1704944064750" height="500"/>
+
+Medición de Deskew
+
+<img src="images/deskew.png" alt="1704944064750" width="900"/>
+
+Medición de sync
+
+<img src="images/sync.png" alt="1704944064750" width="900"/>
+
+Medición de toggle
+
+<img src="images/toggle.png" alt="1704944064750" width="900"/>

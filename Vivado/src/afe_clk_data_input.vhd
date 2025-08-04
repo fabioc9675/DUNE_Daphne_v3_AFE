@@ -70,7 +70,14 @@ begin
     -- End of IBUFDS_inst instantiation
     
     -- Output assignments
-    fclk_out <= fclk_lvds;
+    
+    -- buffer the DCLK output
+    dclk_bufg : BUFG
+        port map (
+            I => fclk_lvds,
+            O => fclk_out
+        );
+
     data_out <= data_lvds;
 
 
