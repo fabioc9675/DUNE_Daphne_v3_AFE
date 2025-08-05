@@ -28,18 +28,10 @@ end afe_dclk_source;
 architecture Behavioral of afe_dclk_source is
 
     signal dclk_mmcm   : std_logic;
-    signal fclk_buf    : std_logic;
     signal clkfb_mmcm  : std_logic;
     signal clkfb_bufg  : std_logic;
 
 begin
-
-    -- Buffer FCLK input
-    fclk_bufg : BUFG
-        port map (
-            I => fclk_in,
-            O => fclk_buf
-        );
 
     -- Buffer feedback path
     clkfb_bufg_inst : BUFG
@@ -107,7 +99,7 @@ begin
         -- Status Ports: 1-bit (each) output: MMCM status ports
         LOCKED => open,       -- 1-bit output: LOCK
         -- Clock Inputs: 1-bit (each) input: Clock input
-        CLKIN1 => fclk_buf,       -- 1-bit input: Clock
+        CLKIN1 => fclk_in,       -- 1-bit input: Clock
         -- Control Ports: 1-bit (each) input: MMCM control ports
         PWRDWN => '0',       -- 1-bit input: Power-down
         RST => rst,             -- 1-bit input: Reset

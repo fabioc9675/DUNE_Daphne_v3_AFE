@@ -139,7 +139,8 @@ architecture arch_imp of AXI_AFE_iddr_v1_0_S00_AXI is
 	--**************************************************
 	---- Parte agregada por Fabian
 	--**************************************************
-	signal fclk_out    : std_logic;                      -- signal output from fclk single ended
+	signal fclk_out    : std_logic;  
+	signal fclk_raw    : std_logic;                     -- signal output from fclk single ended
 	signal data_out    : std_logic;                      -- signal output from data single ended
 	signal dclk_out    : std_logic;                      -- signal output from dclk generator
 
@@ -166,6 +167,7 @@ architecture arch_imp of AXI_AFE_iddr_v1_0_S00_AXI is
     Port ( 
 		fclk_in_p    : in  std_logic;
         fclk_in_n    : in  std_logic;
+		fclk_raw     : out STD_LOGIC;
         fclk_out     : out std_logic
 	);
 	end component afe_fclk_single;
@@ -496,6 +498,7 @@ begin
     port map ( 
 		fclk_in_p   =>  afe_fclk_p,
         fclk_in_n   =>  afe_fclk_n,
+		fclk_raw    =>  fclk_raw,
         fclk_out    =>  fclk_out
 	);
 
@@ -511,7 +514,7 @@ begin
 	afe_dclk_source_comp: component afe_dclk_source
     port map ( 
 		rst         =>  rst,
-        fclk_in     =>  fclk_out,
+        fclk_in     =>  fclk_raw,
         dclk_out    =>  dclk_out
     );
 	

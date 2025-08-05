@@ -21,6 +21,7 @@ use UNISIM.VComponents.all;
 entity afe_fclk_single is
     Port ( fclk_in_p    : in  STD_LOGIC;
            fclk_in_n    : in  STD_LOGIC;
+           fclk_raw     : out STD_LOGIC;
            fclk_out     : out STD_LOGIC
          );
 end afe_fclk_single;
@@ -49,6 +50,8 @@ begin
     -- End of IBUFDS_inst instantiation
     
     -- Output assignments
+
+    fclk_raw <= fclk_lvds;
     
     -- buffer the FCLK output
     fclk_bufg : BUFG
