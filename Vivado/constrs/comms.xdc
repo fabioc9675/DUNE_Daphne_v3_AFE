@@ -64,13 +64,17 @@ set_property PACKAGE_PIN J9 [get_ports {data_in_n}]                          ;# 
 set_property IOSTANDARD LVDS [get_ports {data_in_p data_in_n}]
 set_property DIFF_TERM TRUE [get_ports {data_in_p data_in_n}]
 
+#set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets kria_bd_i/AXI_AFE_iddr_0/U0/AXI_AFE_iddr_v1_0_S00_AXI_inst/afe_fclk_single_comp/fclk_out]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/AXI_AFE_iddr_0/U0/AXI_AFE_iddr_v1_0_S00_AXI_inst/afe_data_single_comp/IBUFDS_data/O]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/AXI_AFE_iddr_0/U0/AXI_AFE_iddr_v1_0_S00_AXI_inst/afe_fclk_single_comp/IBUFDS_fclk/O]
+
 #set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/ADC_AFE_Diff_interfa_0/U0/IBUFDS_fclk/O] 
 #set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/ADC_AFE_Diff_interfa_0/fclk_out]
 #set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/fclk_lvds_receiver_0/U0/IBUFDS_inst/O]
 #set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/fclk_lvds_receiver_1/U0/IBUFDS_inst/O]
 
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/Data_Adq/afe_clk_data_input_0/U0/IBUFDS_fclk/O]
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/Data_Adq/afe_clk_data_input_0/U0/IBUFDS_data/O]
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/Data_Adq/afe_clk_data_input_0/U0/IBUFDS_fclk/O]
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/Data_Adq/afe_clk_data_input_0/U0/IBUFDS_data/O]
 
 
 ##################### AFE1_AFE2_SPI Interface ##############################

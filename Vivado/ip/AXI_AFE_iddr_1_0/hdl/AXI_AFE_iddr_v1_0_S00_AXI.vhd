@@ -144,6 +144,7 @@ architecture arch_imp of AXI_AFE_iddr_v1_0_S00_AXI is
 	signal dclk_out    : std_logic;                      -- signal output from dclk generator
 
 	signal data_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal afe_out     : std_logic_vector (15 downto 0);
 	signal delay_reg   : std_logic_vector ( 3 downto 0);
 	signal sel_reg     : std_logic_vector ( 3 downto 0);
 
@@ -536,8 +537,15 @@ begin
         dclk        =>  dclk_out,
         delay       =>  slv_reg0(3 downto 0),
         sel         =>  slv_reg1(3 downto 0),
-        data_out    =>  afe_data_out
+        data_out    =>  afe_out
     );
+        
+    -- direccionamiento de salidas
+    afe_fclk_out <= fclk_out;
+    afe_dclk_out <= dclk_out;
+
+    -- Dato deserializado
+    afe_data_out <= afe_out;
 
 
 	--**************************************************

@@ -50,12 +50,7 @@ begin
     -- End of IBUFDS_inst instantiation
     
     -- Output assignments
-    
-    -- buffer the DATA output
-    data_bufg : BUFG
-        port map (
-            I => data_lvds,
-            O => data_out
-        );
+    data_out <= data_lvds;
+
 
 end Behavioral;

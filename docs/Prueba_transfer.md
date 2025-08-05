@@ -86,9 +86,7 @@ CLKOUT0_DIVIDE_F => 3.0       -- 280 MHz output
 
 Se configuro el reloj a 40 MHz, se evalua l asincronia entre el FCLK y el DCLK generado con la primitiva MCMM2, a continuacion se muestra la imagen del resultado para los relojes haciendo conteos hasta 2^24
 
-
 <img src="images/Reloj.png" alt="1704944064750" width="900"/>
-
 
 Como se observa, por cada ciclo de  reloj del FCLK se generan 7 ciclos de reloj del DCLK.
 
@@ -116,7 +114,6 @@ Al realizar la prueba con la implementacion se obtuvo la siguiente grafica
 
 <img src="images/rampa.png" alt="1704944064750" width="900"/>
 
-
 ### Prueba de captura de datos de alineacion
 
 Se hara un protocolo para mirar los datos de alineacion y evaluar el corrimiento de los datos
@@ -129,7 +126,6 @@ print("Prueba de ceros")
 prueba_data()
 print("---------------------------------------------------")# prueba de todos ceros
 ```
-
 
 ```
 Prueba de ceros
@@ -181,12 +177,22 @@ Medición de toggle
 
 <img src="images/toggle.png" alt="1704944064750" width="900"/>
 
-
 ### Prueba de alineacion con ILA
 
 Se obtuvo una primera buena alineacion de los datos con un delay de 1 y un slice de 2
 
 <img src="images/sucess_1.png" alt="1704944064750" width="900"/>
 
-
 <img src="images/Signal_ECG_sim.png" alt="1704944064750" width="900"/>
+
+
+> **Nota importante**: Revisar si en el IPCore, el `fclk_out `si deba llevar un `BUFG`, pues esto hace que pierda la propiedad de dedicate clock para la sincronia con las otras primitivas, entonces hay que mirar si se deja el `fclk_out `solo y ya se pone el `BUFG `solo para la salida del IPCore.
+
+
+
+### Block Design
+
+
+<img src="images/blockdesign.png" alt="1704944064750" width="1100"/>
+
+Este es el block design del proyecto con el IPCore
