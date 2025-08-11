@@ -1,8 +1,8 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Mon Aug  4 23:47:14 2025
---Host        : fabiancastano running 64-bit major release  (build 9200)
+--Date        : Mon Aug 11 18:34:24 2025
+--Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
 --Command     : generate_target kria_bd_wrapper.bd
 --Design      : kria_bd_wrapper
 --Purpose     : IP block netlist

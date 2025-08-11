@@ -5680,7 +5680,6 @@
       },
       "AXI_AFE_iddr_0_afe_data_out": {
         "ports": [
-          "AXI_AFE_iddr_0/afe_data_out",
           "AXI_DMA_Real_Diff/data_in"
         ]
       },
@@ -5773,14 +5772,12 @@
       },
       "data_in_n_1": {
         "ports": [
-          "data_in_n",
-          "AXI_AFE_iddr_0/afe_data_n"
+          "data_in_n"
         ]
       },
       "data_in_p_1": {
         "ports": [
-          "data_in_p",
-          "AXI_AFE_iddr_0/afe_data_p"
+          "data_in_p"
         ]
       },
       "data_p_0_1": {

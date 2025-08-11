@@ -5,14 +5,14 @@ use ieee.numeric_std.all;
 entity AXI_AFE_iddr_v1_0_S00_AXI is
 	generic (
 		-- Users to add parameters here
-
+        
 		-- User parameters ends
 		-- Do not modify the parameters beyond this line
 
 		-- Width of S_AXI data bus
 		C_S_AXI_DATA_WIDTH	: integer	:= 32;
 		-- Width of S_AXI address bus
-		C_S_AXI_ADDR_WIDTH	: integer	:= 4
+		C_S_AXI_ADDR_WIDTH	: integer	:= 16
 	);
 	port (
 		-- Users to add ports here
@@ -23,15 +23,37 @@ entity AXI_AFE_iddr_v1_0_S00_AXI is
 		-- Senales diferenciales de entrada, falta agregar los otros canales
 		afe_fclk_p   :  in  std_logic;
 		afe_fclk_n   :  in  std_logic;
-		afe_data_p   :  in  std_logic;
-		afe_data_n   :  in  std_logic;
+
+		afe_dat1_p   :  in  std_logic;
+		afe_dat1_n   :  in  std_logic;		
+		afe_dat2_p   :  in  std_logic;
+		afe_dat2_n   :  in  std_logic;
+		afe_dat3_p   :  in  std_logic;
+		afe_dat3_n   :  in  std_logic;
+		afe_dat4_p   :  in  std_logic;
+		afe_dat4_n   :  in  std_logic;
+		afe_dat5_p   :  in  std_logic;
+		afe_dat5_n   :  in  std_logic;
+		afe_dat6_p   :  in  std_logic;
+		afe_dat6_n   :  in  std_logic;
+		afe_dat7_p   :  in  std_logic;
+		afe_dat7_n   :  in  std_logic;
+		afe_dat8_p   :  in  std_logic;
+		afe_dat8_n   :  in  std_logic;
 
 		-- Senales de reloj generadas por el IP.
 		afe_fclk_out :  out std_logic;
 		afe_dclk_out :  out std_logic;
 
 		-- Dato deserializado
-		afe_data_out :  out std_logic_vector (15 downto 0);
+		afe_dat1_out :  out std_logic_vector (15 downto 0);
+		afe_dat2_out :  out std_logic_vector (15 downto 0);
+		afe_dat3_out :  out std_logic_vector (15 downto 0);
+		afe_dat4_out :  out std_logic_vector (15 downto 0);
+		afe_dat5_out :  out std_logic_vector (15 downto 0);
+		afe_dat6_out :  out std_logic_vector (15 downto 0);
+		afe_dat7_out :  out std_logic_vector (15 downto 0);
+		afe_dat8_out :  out std_logic_vector (15 downto 0);
 		valid        :  out std_logic;
 		--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		-- User ports ends
@@ -125,10 +147,22 @@ architecture arch_imp of AXI_AFE_iddr_v1_0_S00_AXI is
 	---- Signals for user logic register space example
 	--------------------------------------------------
 	---- Number of Slave Registers 4
-	signal slv_reg0	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
-	signal slv_reg1	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
-	signal slv_reg2	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
-	signal slv_reg3	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
+	signal slv_reg00	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
+	signal slv_reg01	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
+	signal slv_reg02	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
+	signal slv_reg03	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg04	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg05	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg06	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg07	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg08	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg09	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg10	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg11	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg12	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg13	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg14	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
+	signal slv_reg15	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);	
 	signal slv_reg_rden	: std_logic;
 	signal slv_reg_wren	: std_logic;
 	signal reg_data_out	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
@@ -141,16 +175,56 @@ architecture arch_imp of AXI_AFE_iddr_v1_0_S00_AXI is
 	--**************************************************
 	signal fclk_out    : std_logic;  
 	signal fclk_raw    : std_logic;                     -- signal output from fclk single ended
-	signal data_out    : std_logic;                      -- signal output from data single ended
+
+	signal dat1_out    : std_logic;                      -- signal output from data single ended
+	signal dat2_out    : std_logic;                      -- signal output from data single ended
+	signal dat3_out    : std_logic;                      -- signal output from data single ended
+	signal dat4_out    : std_logic;                      -- signal output from data single ended
+	signal dat5_out    : std_logic;                      -- signal output from data single ended
+	signal dat6_out    : std_logic;                      -- signal output from data single ended
+	signal dat7_out    : std_logic;                      -- signal output from data single ended
+	signal dat8_out    : std_logic;                      -- signal output from data single ended
+
 	signal dclk_out    : std_logic;                      -- signal output from dclk generator
 
-	signal data_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
-	signal afe_out     : std_logic_vector (15 downto 0);
-	signal delay_reg   : std_logic_vector ( 3 downto 0);
-	signal sel_reg     : std_logic_vector ( 3 downto 0);
+	signal dat1_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal dat2_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal dat3_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal dat4_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal dat5_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal dat6_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal dat7_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
+	signal dat8_sample : std_logic_vector (31 downto 0); -- circular buffer with deserialized data
 
-	signal Q_reg       : std_logic_vector (15 downto 0);
-	signal T_reg       : std_logic_vector (15 downto 0);
+	signal afe_d1_out  : std_logic_vector (15 downto 0);
+	signal afe_d2_out  : std_logic_vector (15 downto 0);
+	signal afe_d3_out  : std_logic_vector (15 downto 0);
+	signal afe_d4_out  : std_logic_vector (15 downto 0);
+	signal afe_d5_out  : std_logic_vector (15 downto 0);
+	signal afe_d6_out  : std_logic_vector (15 downto 0);
+	signal afe_d7_out  : std_logic_vector (15 downto 0);
+	signal afe_d8_out  : std_logic_vector (15 downto 0);
+
+	signal delay1_reg  : std_logic_vector ( 3 downto 0);
+	signal delay2_reg  : std_logic_vector ( 3 downto 0);
+	signal delay3_reg  : std_logic_vector ( 3 downto 0);
+	signal delay4_reg  : std_logic_vector ( 3 downto 0);
+	signal delay5_reg  : std_logic_vector ( 3 downto 0);
+	signal delay6_reg  : std_logic_vector ( 3 downto 0);
+	signal delay7_reg  : std_logic_vector ( 3 downto 0);
+	signal delay8_reg  : std_logic_vector ( 3 downto 0);
+
+	signal sel1_reg    : std_logic_vector ( 3 downto 0);
+	signal sel2_reg    : std_logic_vector ( 3 downto 0);
+	signal sel3_reg    : std_logic_vector ( 3 downto 0);
+	signal sel4_reg    : std_logic_vector ( 3 downto 0);
+	signal sel5_reg    : std_logic_vector ( 3 downto 0);
+	signal sel6_reg    : std_logic_vector ( 3 downto 0);
+	signal sel7_reg    : std_logic_vector ( 3 downto 0);
+	signal sel8_reg    : std_logic_vector ( 3 downto 0);
+
+	--signal Q_reg       : std_logic_vector (15 downto 0);
+	--signal T_reg       : std_logic_vector (15 downto 0);
 	
 	--**************************************************
         ---- Final Parte agregada por Fabian
@@ -227,11 +301,11 @@ begin
 
 	S_AXI_AWREADY	<= axi_awready;
 	S_AXI_WREADY	<= axi_wready;
-	S_AXI_BRESP	<= axi_bresp;
+	S_AXI_BRESP	    <= axi_bresp;
 	S_AXI_BVALID	<= axi_bvalid;
 	S_AXI_ARREADY	<= axi_arready;
-	S_AXI_RDATA	<= axi_rdata;
-	S_AXI_RRESP	<= axi_rresp;
+	S_AXI_RDATA	    <= axi_rdata;
+	S_AXI_RRESP	    <= axi_rresp;
 	S_AXI_RVALID	<= axi_rvalid;
 	-- Implement axi_awready generation
 	-- axi_awready is asserted for one S_AXI_ACLK clock cycle when both
@@ -318,51 +392,171 @@ begin
 	begin
 	  if rising_edge(S_AXI_ACLK) then 
 	    if S_AXI_ARESETN = '0' then
-	      slv_reg0 <= (others => '0');
-	      slv_reg1 <= (others => '0');
-	      slv_reg2 <= (others => '0');
-	      slv_reg3 <= (others => '0');
+	      slv_reg00 <= (others => '0');
+	      slv_reg01 <= (others => '0');
+	      slv_reg02 <= (others => '0');
+	      slv_reg03 <= (others => '0');
+	      slv_reg04 <= (others => '0');
+	      slv_reg05 <= (others => '0');
+	      slv_reg06 <= (others => '0');
+	      slv_reg07 <= (others => '0');
+	      slv_reg08 <= (others => '0');
+	      slv_reg09 <= (others => '0');
+	      slv_reg10 <= (others => '0');
+	      slv_reg11 <= (others => '0');
+	      slv_reg12 <= (others => '0');
+	      slv_reg13 <= (others => '0');
+	      slv_reg14 <= (others => '0');
+	      slv_reg15 <= (others => '0');
 	    else
 	      loc_addr := axi_awaddr(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB);
 	      if (slv_reg_wren = '1') then
 	        case loc_addr is
-	          when b"00" =>
+	          when b"0000" =>
 	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
 	                -- Respective byte enables are asserted as per write strobes                   
 	                -- slave registor 0
-	                slv_reg0(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	                slv_reg00(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
 	              end if;
 	            end loop;
-	          when b"01" =>
+	          when b"0001" =>
 	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
 	                -- Respective byte enables are asserted as per write strobes                   
 	                -- slave registor 1
-	                slv_reg1(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	                slv_reg01(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
 	              end if;
 	            end loop;
-	          when b"10" =>
+	          when b"0010" =>
 	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
 	                -- Respective byte enables are asserted as per write strobes                   
 	                -- slave registor 2
-	                slv_reg2(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	                slv_reg02(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
 	              end if;
 	            end loop;
-	          when b"11" =>
+	          when b"0011" =>
 	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
 	                -- Respective byte enables are asserted as per write strobes                   
 	                -- slave registor 3
-	                slv_reg3(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	                slv_reg03(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"0100" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg04(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+              when b"0101" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg05(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"0110" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg06(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"0111" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg07(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1000" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg08(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1001" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg09(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1010" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg10(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1011" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg11(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1100" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg12(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1101" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg13(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1110" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg14(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
+	              end if;
+	            end loop;
+			  when b"1111" =>
+	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+	                -- Respective byte enables are asserted as per write strobes                   
+	                -- slave registor 3
+	                slv_reg15(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
 	              end if;
 	            end loop;
 	          when others =>
-	            slv_reg0 <= slv_reg0;
-	            slv_reg1 <= slv_reg1;
-	            slv_reg2 <= slv_reg2;
-	            slv_reg3 <= slv_reg3;
+	            slv_reg00 <= slv_reg00;
+	            slv_reg01 <= slv_reg01;
+	            slv_reg02 <= slv_reg02;
+	            slv_reg03 <= slv_reg03;
+	            slv_reg04 <= slv_reg04;
+	            slv_reg05 <= slv_reg05;
+	            slv_reg06 <= slv_reg06;
+	            slv_reg07 <= slv_reg07;
+	            slv_reg08 <= slv_reg08;
+	            slv_reg09 <= slv_reg09;
+	            slv_reg10 <= slv_reg10;
+	            slv_reg11 <= slv_reg11;
+	            slv_reg12 <= slv_reg12;
+	            slv_reg13 <= slv_reg13;
+	            slv_reg14 <= slv_reg14;
+	            slv_reg15 <= slv_reg15;
 	        end case;
 	      end if;
 	    end if;
@@ -456,14 +650,38 @@ begin
 	    -- Address decoding for reading registers
 	    loc_addr := axi_araddr(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB);
 	    case loc_addr is
-	      when b"00" =>
-	        reg_data_out <= slv_reg0;
-	      when b"01" =>
-	        reg_data_out <= slv_reg1;
-	      when b"10" =>
-	        reg_data_out <= data_sample;  --slv_reg2;  -- read the data sample in the PS side
-	      when b"11" =>
-	        reg_data_out <= slv_reg3;
+	      when b"0000" =>
+	        reg_data_out <= slv_reg00;
+	      when b"0001" =>
+	        reg_data_out <= dat1_sample;  --slv_reg01; -- read the data sample in the PS side
+	      when b"0010" =>
+	        reg_data_out <= slv_reg02;  -- read the data sample in the PS side
+	      when b"0011" =>
+	        reg_data_out <= dat2_sample;  --slv_reg03;
+		  when b"0100" =>
+	        reg_data_out <= slv_reg04;
+		  when b"0101" =>
+	        reg_data_out <= dat3_sample;  --slv_reg05;
+		  when b"0110" =>
+	        reg_data_out <= slv_reg06;
+		  when b"0111" =>
+	        reg_data_out <= dat4_sample;  --slv_reg07;
+		  when b"1000" =>
+	        reg_data_out <= slv_reg08;
+		  when b"1001" =>
+	        reg_data_out <= dat5_sample;  --slv_reg09;
+		  when b"1010" =>
+	        reg_data_out <= slv_reg10;
+		  when b"1011" =>
+	        reg_data_out <= dat6_sample;  --slv_reg11;
+		  when b"1100" =>
+	        reg_data_out <= slv_reg12;
+		  when b"1101" =>
+	        reg_data_out <= dat7_sample;  --slv_reg13;
+		  when b"1110" =>
+	        reg_data_out <= slv_reg14;
+		  when b"1111" =>
+	        reg_data_out <= dat8_sample;  --slv_reg15;
 	      when others =>
 	        reg_data_out  <= (others => '0');
 	    end case;
@@ -503,12 +721,61 @@ begin
 	);
 
 	-- component afe_fclk_single
-	afe_data_single_comp: component afe_data_single
+	afe_dat1_single_comp: component afe_data_single
     port map ( 
-		data_in_p   =>  afe_data_p,
-		data_in_n   =>  afe_data_n,
-        data_out    =>  data_out
+		data_in_p   =>  afe_dat1_p,
+		data_in_n   =>  afe_dat1_n,
+        data_out    =>  dat1_out
     );	
+	-- component afe_fclk_single
+	afe_dat2_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat2_p,
+		data_in_n   =>  afe_dat2_n,
+        data_out    =>  dat2_out
+    );
+	-- component afe_fclk_single
+	afe_dat3_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat3_p,
+		data_in_n   =>  afe_dat3_n,
+        data_out    =>  dat3_out
+    );
+	-- component afe_fclk_single
+	afe_dat4_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat4_p,
+		data_in_n   =>  afe_dat4_n,
+        data_out    =>  dat4_out
+    );
+	-- component afe_fclk_single
+	afe_dat5_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat5_p,
+		data_in_n   =>  afe_dat5_n,
+        data_out    =>  dat5_out
+    );
+	-- component afe_fclk_single
+	afe_dat6_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat6_p,
+		data_in_n   =>  afe_dat6_n,
+        data_out    =>  dat6_out
+    );
+	-- component afe_fclk_single
+	afe_dat7_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat7_p,
+		data_in_n   =>  afe_dat7_n,
+        data_out    =>  dat7_out
+    );
+	-- component afe_fclk_single
+	afe_dat8_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat8_p,
+		data_in_n   =>  afe_dat8_n,
+        data_out    =>  dat8_out
+    );
 	
 	-- component afe_dclk_source
 	afe_dclk_source_comp: component afe_dclk_source
@@ -519,28 +786,189 @@ begin
     );
 	
 	-- component afe_deserializer
-	afe_deserializer_comp: component afe_deserializer
+	afe_deserializer_1_comp: component afe_deserializer
     port map ( 
         rst         =>  rst,
         fclk        =>  fclk_out,
         dclk        =>  dclk_out,
-        data_in     =>  data_out,
-        sample      =>  data_sample,
-        valid       =>  valid,
-        Q           =>  Q_reg,
-        T           =>  T_reg
+        data_in     =>  dat1_out,
+        sample      =>  dat1_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
+    );
+	-- component afe_deserializer
+	afe_deserializer_2_comp: component afe_deserializer
+    port map ( 
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        data_in     =>  dat2_out,
+        sample      =>  dat2_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
+    );
+	-- component afe_deserializer
+	afe_deserializer_3_comp: component afe_deserializer
+    port map ( 
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        data_in     =>  dat3_out,
+        sample      =>  dat3_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
+    );
+	-- component afe_deserializer
+	afe_deserializer_4_comp: component afe_deserializer
+    port map ( 
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        data_in     =>  dat4_out,
+        sample      =>  dat4_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
+    );
+	-- component afe_deserializer
+	afe_deserializer_5_comp: component afe_deserializer
+    port map ( 
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        data_in     =>  dat5_out,
+        sample      =>  dat5_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
+    );
+	-- component afe_deserializer
+	afe_deserializer_6_comp: component afe_deserializer
+    port map ( 
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        data_in     =>  dat6_out,
+        sample      =>  dat6_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
+    );
+	-- component afe_deserializer
+	afe_deserializer_7_comp: component afe_deserializer
+    port map ( 
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        data_in     =>  dat7_out,
+        sample      =>  dat7_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
+    );
+	-- component afe_deserializer
+	afe_deserializer_8_comp: component afe_deserializer
+    port map ( 
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        data_in     =>  dat8_out,
+        sample      =>  dat8_sample,
+        valid       =>  open,
+        Q           =>  open,
+        T           =>  open
     );
 
 	-- component afe_slice_data
-	afe_slice_data_comp: component afe_slice_data
+	afe_slice_dat1_comp: component afe_slice_data
     port map ( 
-        data_in     =>  data_sample,
+        data_in     =>  dat1_sample,
         rst         =>  rst,
         fclk        =>  fclk_out,
         dclk        =>  dclk_out,
-        delay       =>  slv_reg0(3 downto 0),
-        sel         =>  slv_reg1(3 downto 0),
-        data_out    =>  afe_out
+        delay       =>  slv_reg00(3 downto 0),
+        sel         =>  slv_reg00(7 downto 4),
+        data_out    =>  afe_d1_out
+    );
+	-- component afe_slice_data
+	afe_slice_dat2_comp: component afe_slice_data
+    port map ( 
+        data_in     =>  dat2_sample,
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        delay       =>  slv_reg02(3 downto 0),
+        sel         =>  slv_reg02(7 downto 4),
+        data_out    =>  afe_d2_out
+    );
+	-- component afe_slice_data
+	afe_slice_dat3_comp: component afe_slice_data
+    port map ( 
+        data_in     =>  dat3_sample,
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        delay       =>  slv_reg04(3 downto 0),
+        sel         =>  slv_reg04(7 downto 4),
+        data_out    =>  afe_d3_out
+    );
+	-- component afe_slice_data
+	afe_slice_dat4_comp: component afe_slice_data
+    port map ( 
+        data_in     =>  dat4_sample,
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        delay       =>  slv_reg06(3 downto 0),
+        sel         =>  slv_reg06(7 downto 4),
+        data_out    =>  afe_d4_out
+    );
+	-- component afe_slice_data
+	afe_slice_dat5_comp: component afe_slice_data
+    port map ( 
+        data_in     =>  dat5_sample,
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        delay       =>  slv_reg08(3 downto 0),
+        sel         =>  slv_reg08(7 downto 4),
+        data_out    =>  afe_d5_out
+    );
+	-- component afe_slice_data
+	afe_slice_dat6_comp: component afe_slice_data
+    port map ( 
+        data_in     =>  dat6_sample,
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        delay       =>  slv_reg10(3 downto 0),
+        sel         =>  slv_reg10(7 downto 4),
+        data_out    =>  afe_d6_out
+    );
+	-- component afe_slice_data
+	afe_slice_dat7_comp: component afe_slice_data
+    port map ( 
+        data_in     =>  dat7_sample,
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        delay       =>  slv_reg12(3 downto 0),
+        sel         =>  slv_reg12(7 downto 4),
+        data_out    =>  afe_d7_out
+    );
+	-- component afe_slice_data
+	afe_slice_dat8_comp: component afe_slice_data
+    port map ( 
+        data_in     =>  dat8_sample,
+        rst         =>  rst,
+        fclk        =>  fclk_out,
+        dclk        =>  dclk_out,
+        delay       =>  slv_reg14(3 downto 0),
+        sel         =>  slv_reg14(7 downto 4),
+        data_out    =>  afe_d8_out
     );
         
     -- direccionamiento de salidas
@@ -548,7 +976,14 @@ begin
     afe_dclk_out <= dclk_out;
 
     -- Dato deserializado
-    afe_data_out <= afe_out;
+    afe_dat1_out <= afe_d1_out;
+	afe_dat2_out <= afe_d2_out;
+	afe_dat3_out <= afe_d3_out;
+	afe_dat4_out <= afe_d4_out;
+	afe_dat5_out <= afe_d5_out;
+	afe_dat6_out <= afe_d6_out;
+	afe_dat7_out <= afe_d7_out;
+	afe_dat8_out <= afe_d8_out;
 
 
 	--**************************************************

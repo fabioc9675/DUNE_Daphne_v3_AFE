@@ -12,7 +12,7 @@ entity AXI_AFE_iddr_v1_0 is
 
 		-- Parameters of Axi Slave Bus Interface S00_AXI
 		C_S00_AXI_DATA_WIDTH	: integer	:= 32;
-		C_S00_AXI_ADDR_WIDTH	: integer	:= 4
+		C_S00_AXI_ADDR_WIDTH	: integer	:= 16
 	);
 	port (
 		-- Users to add ports here
@@ -23,15 +23,37 @@ entity AXI_AFE_iddr_v1_0 is
 		-- Senales diferenciales de entrada, falta agregar los otros canales
 		afe_fclk_p   :  in  std_logic;
 		afe_fclk_n   :  in  std_logic;
-		afe_data_p   :  in  std_logic;
-		afe_data_n   :  in  std_logic;
+		
+		afe_dat1_p   :  in  std_logic;
+		afe_dat1_n   :  in  std_logic;		
+		afe_dat2_p   :  in  std_logic;
+		afe_dat2_n   :  in  std_logic;
+		afe_dat3_p   :  in  std_logic;
+		afe_dat3_n   :  in  std_logic;
+		afe_dat4_p   :  in  std_logic;
+		afe_dat4_n   :  in  std_logic;
+		afe_dat5_p   :  in  std_logic;
+		afe_dat5_n   :  in  std_logic;
+		afe_dat6_p   :  in  std_logic;
+		afe_dat6_n   :  in  std_logic;
+		afe_dat7_p   :  in  std_logic;
+		afe_dat7_n   :  in  std_logic;
+		afe_dat8_p   :  in  std_logic;
+		afe_dat8_n   :  in  std_logic;
 
 		-- Senales de reloj generadas por el IP.
 		afe_fclk_out :  out std_logic;
 		afe_dclk_out :  out std_logic;
 
 		-- Dato deserializado
-		afe_data_out :  out std_logic_vector (15 downto 0);
+		afe_dat1_out :  out std_logic_vector (15 downto 0);
+		afe_dat2_out :  out std_logic_vector (15 downto 0);
+		afe_dat3_out :  out std_logic_vector (15 downto 0);
+		afe_dat4_out :  out std_logic_vector (15 downto 0);
+		afe_dat5_out :  out std_logic_vector (15 downto 0);
+		afe_dat6_out :  out std_logic_vector (15 downto 0);
+		afe_dat7_out :  out std_logic_vector (15 downto 0);
+		afe_dat8_out :  out std_logic_vector (15 downto 0);
 		valid        :  out std_logic;
 		--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		-- User ports ends
@@ -69,7 +91,7 @@ architecture arch_imp of AXI_AFE_iddr_v1_0 is
 	component AXI_AFE_iddr_v1_0_S00_AXI is
 		generic (
 		C_S_AXI_DATA_WIDTH	: integer	:= 32;
-		C_S_AXI_ADDR_WIDTH	: integer	:= 4
+		C_S_AXI_ADDR_WIDTH	: integer	:= 16
 		);
 		port (
 		--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,15 +101,37 @@ architecture arch_imp of AXI_AFE_iddr_v1_0 is
 		-- Senales diferenciales de entrada, falta agregar los otros canales
 		afe_fclk_p   :  in  std_logic;
 		afe_fclk_n   :  in  std_logic;
-		afe_data_p   :  in  std_logic;
-		afe_data_n   :  in  std_logic;
+		
+		afe_dat1_p   :  in  std_logic;
+		afe_dat1_n   :  in  std_logic;		
+		afe_dat2_p   :  in  std_logic;
+		afe_dat2_n   :  in  std_logic;
+		afe_dat3_p   :  in  std_logic;
+		afe_dat3_n   :  in  std_logic;
+		afe_dat4_p   :  in  std_logic;
+		afe_dat4_n   :  in  std_logic;
+		afe_dat5_p   :  in  std_logic;
+		afe_dat5_n   :  in  std_logic;
+		afe_dat6_p   :  in  std_logic;
+		afe_dat6_n   :  in  std_logic;
+		afe_dat7_p   :  in  std_logic;
+		afe_dat7_n   :  in  std_logic;
+		afe_dat8_p   :  in  std_logic;
+		afe_dat8_n   :  in  std_logic;
 
 		-- Senales de reloj generadas por el IP.
 		afe_fclk_out :  out std_logic;
 		afe_dclk_out :  out std_logic;
 
 		-- Dato deserializado
-		afe_data_out :  out std_logic_vector (15 downto 0);
+		afe_dat1_out :  out std_logic_vector (15 downto 0);
+		afe_dat2_out :  out std_logic_vector (15 downto 0);
+		afe_dat3_out :  out std_logic_vector (15 downto 0);
+		afe_dat4_out :  out std_logic_vector (15 downto 0);
+		afe_dat5_out :  out std_logic_vector (15 downto 0);
+		afe_dat6_out :  out std_logic_vector (15 downto 0);
+		afe_dat7_out :  out std_logic_vector (15 downto 0);
+		afe_dat8_out :  out std_logic_vector (15 downto 0);
 		valid        :  out std_logic;
 		--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		S_AXI_ACLK	: in std_logic;
@@ -128,11 +172,32 @@ AXI_AFE_iddr_v1_0_S00_AXI_inst : AXI_AFE_iddr_v1_0_S00_AXI
 		rst          => rst,
 		afe_fclk_p   => afe_fclk_p,
 		afe_fclk_n   => afe_fclk_n,
-		afe_data_p   => afe_data_p,
-		afe_data_n   => afe_data_n,
+		afe_dat1_p   => afe_dat1_p,
+		afe_dat1_n   => afe_dat1_n,		
+		afe_dat2_p   => afe_dat2_p,
+		afe_dat2_n   => afe_dat2_n,
+		afe_dat3_p   => afe_dat3_p,
+		afe_dat3_n   => afe_dat3_n,
+		afe_dat4_p   => afe_dat4_p,
+		afe_dat4_n   => afe_dat4_n,
+		afe_dat5_p   => afe_dat5_p,
+		afe_dat5_n   => afe_dat5_n,
+		afe_dat6_p   => afe_dat6_p,
+		afe_dat6_n   => afe_dat6_n,
+		afe_dat7_p   => afe_dat7_p,
+		afe_dat7_n   => afe_dat7_n,
+		afe_dat8_p   => afe_dat8_p,
+		afe_dat8_n   => afe_dat8_n,
 		afe_fclk_out => afe_fclk_out,
 		afe_dclk_out => afe_dclk_out,
-		afe_data_out => afe_data_out,
+		afe_dat1_out => afe_dat1_out,
+		afe_dat2_out => afe_dat2_out,
+		afe_dat3_out => afe_dat3_out,
+		afe_dat4_out => afe_dat4_out,
+		afe_dat5_out => afe_dat5_out,
+		afe_dat6_out => afe_dat6_out,
+		afe_dat7_out => afe_dat7_out,
+		afe_dat8_out => afe_dat8_out,
 		valid        => valid,
 		--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		S_AXI_ACLK	=> s00_axi_aclk,
