@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity AXI_AFE_iddr_v1_0 is
 	generic (
 		-- Users to add parameters here
-
+        NUMBER_CHANNELS     : integer   := 1;
 		-- User parameters ends
 		-- Do not modify the parameters beyond this line
 

@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity AXI_AFE_iddr_v1_0_S00_AXI is
 	generic (
 		-- Users to add parameters here
-        
+        NUMBER_CHANNELS     : integer   := 1;
 		-- User parameters ends
 		-- Do not modify the parameters beyond this line
 
@@ -25,7 +25,7 @@ entity AXI_AFE_iddr_v1_0_S00_AXI is
 		afe_fclk_n   :  in  std_logic;
 
 		afe_dat1_p   :  in  std_logic;
-		afe_dat1_n   :  in  std_logic;		
+		afe_dat1_n   :  in  std_logic;			
 		afe_dat2_p   :  in  std_logic;
 		afe_dat2_n   :  in  std_logic;
 		afe_dat3_p   :  in  std_logic;
@@ -644,7 +644,7 @@ begin
 	-- and the slave is ready to accept the read address.
 	slv_reg_rden <= axi_arready and S_AXI_ARVALID and (not axi_rvalid) ;
 
-	process (slv_reg0, slv_reg1, slv_reg2, slv_reg3, axi_araddr, S_AXI_ARESETN, slv_reg_rden)
+	process (slv_reg00, slv_reg01, slv_reg02, slv_reg03, slv_reg04, slv_reg05, slv_reg06, slv_reg07, slv_reg08, slv_reg09, slv_reg10, slv_reg11, slv_reg12, slv_reg13, slv_reg14, slv_reg15, axi_araddr, S_AXI_ARESETN, slv_reg_rden)
 	variable loc_addr :std_logic_vector(OPT_MEM_ADDR_BITS downto 0);
 	begin
 	    -- Address decoding for reading registers
@@ -719,63 +719,6 @@ begin
 		fclk_raw    =>  fclk_raw,
         fclk_out    =>  fclk_out
 	);
-
-	-- component afe_fclk_single
-	afe_dat1_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat1_p,
-		data_in_n   =>  afe_dat1_n,
-        data_out    =>  dat1_out
-    );	
-	-- component afe_fclk_single
-	afe_dat2_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat2_p,
-		data_in_n   =>  afe_dat2_n,
-        data_out    =>  dat2_out
-    );
-	-- component afe_fclk_single
-	afe_dat3_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat3_p,
-		data_in_n   =>  afe_dat3_n,
-        data_out    =>  dat3_out
-    );
-	-- component afe_fclk_single
-	afe_dat4_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat4_p,
-		data_in_n   =>  afe_dat4_n,
-        data_out    =>  dat4_out
-    );
-	-- component afe_fclk_single
-	afe_dat5_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat5_p,
-		data_in_n   =>  afe_dat5_n,
-        data_out    =>  dat5_out
-    );
-	-- component afe_fclk_single
-	afe_dat6_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat6_p,
-		data_in_n   =>  afe_dat6_n,
-        data_out    =>  dat6_out
-    );
-	-- component afe_fclk_single
-	afe_dat7_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat7_p,
-		data_in_n   =>  afe_dat7_n,
-        data_out    =>  dat7_out
-    );
-	-- component afe_fclk_single
-	afe_dat8_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat8_p,
-		data_in_n   =>  afe_dat8_n,
-        data_out    =>  dat8_out
-    );
 	
 	-- component afe_dclk_source
 	afe_dclk_source_comp: component afe_dclk_source
@@ -784,8 +727,15 @@ begin
         fclk_in     =>  fclk_raw,
         dclk_out    =>  dclk_out
     );
-	
-	-- component afe_deserializer
+
+	-- component afe_fclk_single
+	afe_dat1_single_comp: component afe_data_single
+    port map ( 
+		data_in_p   =>  afe_dat1_p,
+		data_in_n   =>  afe_dat1_n,
+        data_out    =>  dat1_out
+    );	
+    -- component afe_deserializer
 	afe_deserializer_1_comp: component afe_deserializer
     port map ( 
         rst         =>  rst,
@@ -797,92 +747,7 @@ begin
         Q           =>  open,
         T           =>  open
     );
-	-- component afe_deserializer
-	afe_deserializer_2_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat2_out,
-        sample      =>  dat2_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-	-- component afe_deserializer
-	afe_deserializer_3_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat3_out,
-        sample      =>  dat3_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-	-- component afe_deserializer
-	afe_deserializer_4_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat4_out,
-        sample      =>  dat4_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-	-- component afe_deserializer
-	afe_deserializer_5_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat5_out,
-        sample      =>  dat5_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-	-- component afe_deserializer
-	afe_deserializer_6_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat6_out,
-        sample      =>  dat6_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-	-- component afe_deserializer
-	afe_deserializer_7_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat7_out,
-        sample      =>  dat7_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-	-- component afe_deserializer
-	afe_deserializer_8_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat8_out,
-        sample      =>  dat8_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-
-	-- component afe_slice_data
+    -- component afe_slice_data
 	afe_slice_dat1_comp: component afe_slice_data
     port map ( 
         data_in     =>  dat1_sample,
@@ -893,84 +758,233 @@ begin
         sel         =>  slv_reg00(7 downto 4),
         data_out    =>  afe_d1_out
     );
-	-- component afe_slice_data
-	afe_slice_dat2_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat2_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg02(3 downto 0),
-        sel         =>  slv_reg02(7 downto 4),
-        data_out    =>  afe_d2_out
-    );
-	-- component afe_slice_data
-	afe_slice_dat3_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat3_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg04(3 downto 0),
-        sel         =>  slv_reg04(7 downto 4),
-        data_out    =>  afe_d3_out
-    );
-	-- component afe_slice_data
-	afe_slice_dat4_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat4_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg06(3 downto 0),
-        sel         =>  slv_reg06(7 downto 4),
-        data_out    =>  afe_d4_out
-    );
-	-- component afe_slice_data
-	afe_slice_dat5_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat5_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg08(3 downto 0),
-        sel         =>  slv_reg08(7 downto 4),
-        data_out    =>  afe_d5_out
-    );
-	-- component afe_slice_data
-	afe_slice_dat6_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat6_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg10(3 downto 0),
-        sel         =>  slv_reg10(7 downto 4),
-        data_out    =>  afe_d6_out
-    );
-	-- component afe_slice_data
-	afe_slice_dat7_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat7_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg12(3 downto 0),
-        sel         =>  slv_reg12(7 downto 4),
-        data_out    =>  afe_d7_out
-    );
-	-- component afe_slice_data
-	afe_slice_dat8_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat8_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg14(3 downto 0),
-        sel         =>  slv_reg14(7 downto 4),
-        data_out    =>  afe_d8_out
-    );
+    
         
+	-- component afe_fclk_single
+	gen_extra_2 : if NUMBER_CHANNELs >= 2 generate
+        afe_dat2_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat2_p,
+            data_in_n   =>  afe_dat2_n,
+            data_out    =>  dat2_out
+        );
+        -- component afe_deserializer
+        afe_deserializer_2_comp: component afe_deserializer
+        port map ( 
+            rst         =>  rst,
+            fclk        =>  fclk_out,
+            dclk        =>  dclk_out,
+            data_in     =>  dat2_out,
+            sample      =>  dat2_sample,
+            valid       =>  open,
+            Q           =>  open,
+            T           =>  open
+        );
+		-- component afe_slice_data
+		afe_slice_dat2_comp: component afe_slice_data
+		port map ( 
+			data_in     =>  dat2_sample,
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			delay       =>  slv_reg02(3 downto 0),
+			sel         =>  slv_reg02(7 downto 4),
+			data_out    =>  afe_d2_out
+		);
+    end generate;
+	-- component afe_fclk_single
+	gen_extra_3 : if NUMBER_CHANNELs >= 3 generate
+        afe_dat3_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat3_p,
+            data_in_n   =>  afe_dat3_n,
+            data_out    =>  dat3_out
+        );
+		-- component afe_deserializer
+		afe_deserializer_3_comp: component afe_deserializer
+		port map ( 
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			data_in     =>  dat3_out,
+			sample      =>  dat3_sample,
+			valid       =>  open,
+			Q           =>  open,
+			T           =>  open
+		);
+		-- component afe_slice_data
+		afe_slice_dat3_comp: component afe_slice_data
+		port map ( 
+			data_in     =>  dat3_sample,
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			delay       =>  slv_reg04(3 downto 0),
+			sel         =>  slv_reg04(7 downto 4),
+			data_out    =>  afe_d3_out
+		);
+	end generate;
+	-- component afe_fclk_single
+	gen_extra_4 : if NUMBER_CHANNELs >= 4 generate
+        afe_dat4_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat4_p,
+            data_in_n   =>  afe_dat4_n,
+            data_out    =>  dat4_out
+        );
+		-- component afe_deserializer
+		afe_deserializer_4_comp: component afe_deserializer
+		port map ( 
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			data_in     =>  dat4_out,
+			sample      =>  dat4_sample,
+			valid       =>  open,
+			Q           =>  open,
+			T           =>  open
+		);
+		-- component afe_slice_data
+		afe_slice_dat4_comp: component afe_slice_data
+		port map ( 
+			data_in     =>  dat4_sample,
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			delay       =>  slv_reg06(3 downto 0),
+			sel         =>  slv_reg06(7 downto 4),
+			data_out    =>  afe_d4_out
+		);
+	end generate;
+	-- component afe_fclk_single
+	gen_extra_5 : if NUMBER_CHANNELs >= 5 generate
+        afe_dat5_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat5_p,
+            data_in_n   =>  afe_dat5_n,
+            data_out    =>  dat5_out
+        );
+		-- component afe_deserializer
+		afe_deserializer_5_comp: component afe_deserializer
+		port map ( 
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			data_in     =>  dat5_out,
+			sample      =>  dat5_sample,
+			valid       =>  open,
+			Q           =>  open,
+			T           =>  open
+		);
+		-- component afe_slice_data
+		afe_slice_dat5_comp: component afe_slice_data
+		port map ( 
+			data_in     =>  dat5_sample,
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			delay       =>  slv_reg08(3 downto 0),
+			sel         =>  slv_reg08(7 downto 4),
+			data_out    =>  afe_d5_out
+		);
+	end generate;
+	-- component afe_fclk_single
+	gen_extra_6 : if NUMBER_CHANNELs >= 6 generate
+        afe_dat6_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat6_p,
+            data_in_n   =>  afe_dat6_n,
+            data_out    =>  dat6_out
+        );
+		-- component afe_deserializer
+		afe_deserializer_6_comp: component afe_deserializer
+		port map ( 
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			data_in     =>  dat6_out,
+			sample      =>  dat6_sample,
+			valid       =>  open,
+			Q           =>  open,
+			T           =>  open
+		);
+		-- component afe_slice_data
+		afe_slice_dat6_comp: component afe_slice_data
+		port map ( 
+			data_in     =>  dat6_sample,
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			delay       =>  slv_reg10(3 downto 0),
+			sel         =>  slv_reg10(7 downto 4),
+			data_out    =>  afe_d6_out
+		);
+	end generate;
+	-- component afe_fclk_single
+	gen_extra_7 : if NUMBER_CHANNELs >= 7 generate
+        afe_dat7_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat7_p,
+            data_in_n   =>  afe_dat7_n,
+            data_out    =>  dat7_out
+        );
+		-- component afe_deserializer
+		afe_deserializer_7_comp: component afe_deserializer
+		port map ( 
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			data_in     =>  dat7_out,
+			sample      =>  dat7_sample,
+			valid       =>  open,
+			Q           =>  open,
+			T           =>  open
+		);
+		-- component afe_slice_data
+		afe_slice_dat7_comp: component afe_slice_data
+		port map ( 
+			data_in     =>  dat7_sample,
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			delay       =>  slv_reg12(3 downto 0),
+			sel         =>  slv_reg12(7 downto 4),
+			data_out    =>  afe_d7_out
+		);
+	end generate;
+	-- component afe_fclk_single
+	gen_extra_8 : if NUMBER_CHANNELs >= 8 generate
+        afe_dat8_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat8_p,
+            data_in_n   =>  afe_dat8_n,
+            data_out    =>  dat8_out
+        );
+		-- component afe_deserializer
+		afe_deserializer_8_comp: component afe_deserializer
+		port map ( 
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			data_in     =>  dat8_out,
+			sample      =>  dat8_sample,
+			valid       =>  open,
+			Q           =>  open,
+			T           =>  open
+		);
+		-- component afe_slice_data
+		afe_slice_dat8_comp: component afe_slice_data
+		port map ( 
+			data_in     =>  dat8_sample,
+			rst         =>  rst,
+			fclk        =>  fclk_out,
+			dclk        =>  dclk_out,
+			delay       =>  slv_reg14(3 downto 0),
+			sel         =>  slv_reg14(7 downto 4),
+			data_out    =>  afe_d8_out
+		);
+	end generate;
+		        
     -- direccionamiento de salidas
     afe_fclk_out <= fclk_out;
     afe_dclk_out <= dclk_out;
