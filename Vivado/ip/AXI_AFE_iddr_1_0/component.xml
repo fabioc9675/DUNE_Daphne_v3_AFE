@@ -282,7 +282,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>5e9224c0</spirit:value>
+            <spirit:value>e789d96e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -298,7 +298,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>5e9224c0</spirit:value>
+            <spirit:value>e789d96e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -326,7 +326,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>14a942d3</spirit:value>
+            <spirit:value>f2add503</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1379,7 +1379,7 @@
       <spirit:file>
         <spirit:name>hdl/AXI_AFE_iddr_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_8bc359a9</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_9f4c1105</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1450,7 +1450,7 @@
       <spirit:file>
         <spirit:name>xgui/AXI_AFE_iddr_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_14a942d3</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_f2add503</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1542,14 +1542,14 @@
       </xilinx:taxonomies>
       <xilinx:displayName>AXI_AFE_iddr_v1.0</xilinx:displayName>
       <xilinx:vendorDisplayName>Fabian Castano</xilinx:vendorDisplayName>
-      <xilinx:coreRevision>20</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2025-08-12T00:38:35Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>23</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2025-08-12T03:46:24Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2022.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="172e178d"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="efa536f1"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a5b767e9"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="79f272a1"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="695d7e3b"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="eb7003db"/>

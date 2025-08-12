@@ -7,8 +7,11 @@ proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "C_S00_AXI_ADDR_WIDTH" -parent ${Page_0}
   ipgui::add_param $IPINST -name "C_S00_AXI_BASEADDR" -parent ${Page_0}
   ipgui::add_param $IPINST -name "C_S00_AXI_HIGHADDR" -parent ${Page_0}
+  #Adding Group
+  set Channel_configuration [ipgui::add_group $IPINST -name "Channel configuration" -parent ${Page_0} -layout horizontal]
+  ipgui::add_param $IPINST -name "NUMBER_CHANNELS" -parent ${Channel_configuration} -widget comboBox
 
-  ipgui::add_param $IPINST -name "NUMBER_CHANNELS" -widget comboBox
+
 
 }
 

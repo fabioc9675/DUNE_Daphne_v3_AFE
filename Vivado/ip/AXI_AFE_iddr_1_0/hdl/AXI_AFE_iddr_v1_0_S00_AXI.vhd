@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity AXI_AFE_iddr_v1_0_S00_AXI is
 	generic (
 		-- Users to add parameters here
-        NUMBER_CHANNELS     : integer   := 1;
+        NUMBER_CHANNELS     : integer;
 		-- User parameters ends
 		-- Do not modify the parameters beyond this line
 
@@ -727,41 +727,41 @@ begin
         fclk_in     =>  fclk_raw,
         dclk_out    =>  dclk_out
     );
-
-	-- component afe_fclk_single
-	afe_dat1_single_comp: component afe_data_single
-    port map ( 
-		data_in_p   =>  afe_dat1_p,
-		data_in_n   =>  afe_dat1_n,
-        data_out    =>  dat1_out
-    );	
-    -- component afe_deserializer
-	afe_deserializer_1_comp: component afe_deserializer
-    port map ( 
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        data_in     =>  dat1_out,
-        sample      =>  dat1_sample,
-        valid       =>  open,
-        Q           =>  open,
-        T           =>  open
-    );
-    -- component afe_slice_data
-	afe_slice_dat1_comp: component afe_slice_data
-    port map ( 
-        data_in     =>  dat1_sample,
-        rst         =>  rst,
-        fclk        =>  fclk_out,
-        dclk        =>  dclk_out,
-        delay       =>  slv_reg00(3 downto 0),
-        sel         =>  slv_reg00(7 downto 4),
-        data_out    =>  afe_d1_out
-    );
     
-        
+    gen_extra_1 : if NUMBER_CHANNELS >= 1 generate
+        -- component afe_fclk_single
+        afe_dat1_single_comp: component afe_data_single
+        port map ( 
+            data_in_p   =>  afe_dat1_p,
+            data_in_n   =>  afe_dat1_n,
+            data_out    =>  dat1_out
+        );	
+        -- component afe_deserializer
+        afe_deserializer_1_comp: component afe_deserializer
+        port map ( 
+            rst         =>  rst,
+            fclk        =>  fclk_out,
+            dclk        =>  dclk_out,
+            data_in     =>  dat1_out,
+            sample      =>  dat1_sample,
+            valid       =>  open,
+            Q           =>  open,
+            T           =>  open
+        );
+        -- component afe_slice_data
+        afe_slice_dat1_comp: component afe_slice_data
+        port map ( 
+            data_in     =>  dat1_sample,
+            rst         =>  rst,
+            fclk        =>  fclk_out,
+            dclk        =>  dclk_out,
+            delay       =>  slv_reg00(3 downto 0),
+            sel         =>  slv_reg00(7 downto 4),
+            data_out    =>  afe_d1_out
+        );
+    end generate gen_extra_1;  
 	-- component afe_fclk_single
-	gen_extra_2 : if NUMBER_CHANNELs >= 2 generate
+	gen_extra_2 : if NUMBER_CHANNELS >= 2 generate
         afe_dat2_single_comp: component afe_data_single
         port map ( 
             data_in_p   =>  afe_dat2_p,
@@ -791,9 +791,9 @@ begin
 			sel         =>  slv_reg02(7 downto 4),
 			data_out    =>  afe_d2_out
 		);
-    end generate;
+    end generate gen_extra_2;
 	-- component afe_fclk_single
-	gen_extra_3 : if NUMBER_CHANNELs >= 3 generate
+	gen_extra_3 : if NUMBER_CHANNELS >= 3 generate
         afe_dat3_single_comp: component afe_data_single
         port map ( 
             data_in_p   =>  afe_dat3_p,
@@ -823,9 +823,9 @@ begin
 			sel         =>  slv_reg04(7 downto 4),
 			data_out    =>  afe_d3_out
 		);
-	end generate;
+	end generate gen_extra_3;
 	-- component afe_fclk_single
-	gen_extra_4 : if NUMBER_CHANNELs >= 4 generate
+	gen_extra_4 : if NUMBER_CHANNELS >= 4 generate
         afe_dat4_single_comp: component afe_data_single
         port map ( 
             data_in_p   =>  afe_dat4_p,
@@ -855,9 +855,9 @@ begin
 			sel         =>  slv_reg06(7 downto 4),
 			data_out    =>  afe_d4_out
 		);
-	end generate;
+	end generate gen_extra_4;
 	-- component afe_fclk_single
-	gen_extra_5 : if NUMBER_CHANNELs >= 5 generate
+	gen_extra_5 : if NUMBER_CHANNELS >= 5 generate
         afe_dat5_single_comp: component afe_data_single
         port map ( 
             data_in_p   =>  afe_dat5_p,
@@ -887,9 +887,9 @@ begin
 			sel         =>  slv_reg08(7 downto 4),
 			data_out    =>  afe_d5_out
 		);
-	end generate;
+	end generate gen_extra_5;
 	-- component afe_fclk_single
-	gen_extra_6 : if NUMBER_CHANNELs >= 6 generate
+	gen_extra_6 : if NUMBER_CHANNELS >= 6 generate
         afe_dat6_single_comp: component afe_data_single
         port map ( 
             data_in_p   =>  afe_dat6_p,
@@ -919,9 +919,9 @@ begin
 			sel         =>  slv_reg10(7 downto 4),
 			data_out    =>  afe_d6_out
 		);
-	end generate;
+	end generate gen_extra_6;
 	-- component afe_fclk_single
-	gen_extra_7 : if NUMBER_CHANNELs >= 7 generate
+	gen_extra_7 : if NUMBER_CHANNELS >= 7 generate
         afe_dat7_single_comp: component afe_data_single
         port map ( 
             data_in_p   =>  afe_dat7_p,
@@ -951,9 +951,9 @@ begin
 			sel         =>  slv_reg12(7 downto 4),
 			data_out    =>  afe_d7_out
 		);
-	end generate;
+	end generate gen_extra_7;
 	-- component afe_fclk_single
-	gen_extra_8 : if NUMBER_CHANNELs >= 8 generate
+	gen_extra_8 : if NUMBER_CHANNELS >= 8 generate
         afe_dat8_single_comp: component afe_data_single
         port map ( 
             data_in_p   =>  afe_dat8_p,
@@ -983,7 +983,7 @@ begin
 			sel         =>  slv_reg14(7 downto 4),
 			data_out    =>  afe_d8_out
 		);
-	end generate;
+	end generate gen_extra_8;
 		        
     -- direccionamiento de salidas
     afe_fclk_out <= fclk_out;

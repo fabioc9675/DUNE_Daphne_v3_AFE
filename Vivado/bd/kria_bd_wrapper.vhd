@@ -1,8 +1,8 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Mon Aug 11 19:39:52 2025
---Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
+--Date        : Mon Aug 11 23:20:26 2025
+--Host        : fabiancastano running 64-bit major release  (build 9200)
 --Command     : generate_target kria_bd_wrapper.bd
 --Design      : kria_bd_wrapper
 --Purpose     : IP block netlist
@@ -18,9 +18,13 @@ entity kria_bd_wrapper is
     afe0_sdout : in STD_LOGIC;
     afe_gpio_ctrl_tri_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
     afe_pdn_rst_bus_tri_io : inout STD_LOGIC_VECTOR ( 1 downto 0 );
+    dat1_in_n : in STD_LOGIC;
+    dat1_in_p : in STD_LOGIC;
+    dat2_in_n : in STD_LOGIC;
+    dat2_in_p : in STD_LOGIC;
+    dat3_in_n : in STD_LOGIC;
+    dat3_in_p : in STD_LOGIC;
     data_in : in STD_LOGIC;
-    data_in_n : in STD_LOGIC;
-    data_in_p : in STD_LOGIC;
     fan_en_b : out STD_LOGIC_VECTOR ( 0 to 0 );
     fclk_in : in STD_LOGIC;
     fclk_in_n : in STD_LOGIC;
@@ -53,8 +57,12 @@ architecture STRUCTURE of kria_bd_wrapper is
     fclk_in_p : in STD_LOGIC;
     uf_led_0 : out STD_LOGIC;
     uf_led_1 : out STD_LOGIC;
-    data_in_p : in STD_LOGIC;
-    data_in_n : in STD_LOGIC
+    dat1_in_p : in STD_LOGIC;
+    dat1_in_n : in STD_LOGIC;
+    dat2_in_p : in STD_LOGIC;
+    dat3_in_n : in STD_LOGIC;
+    dat2_in_n : in STD_LOGIC;
+    dat3_in_p : in STD_LOGIC
   );
   end component kria_bd;
   component IOBUF is
@@ -121,9 +129,13 @@ kria_bd_i: component kria_bd
       afe_pdn_rst_bus_tri_o(0) => afe_pdn_rst_bus_tri_o_0(0),
       afe_pdn_rst_bus_tri_t(1) => afe_pdn_rst_bus_tri_t_1(1),
       afe_pdn_rst_bus_tri_t(0) => afe_pdn_rst_bus_tri_t_0(0),
+      dat1_in_n => dat1_in_n,
+      dat1_in_p => dat1_in_p,
+      dat2_in_n => dat2_in_n,
+      dat2_in_p => dat2_in_p,
+      dat3_in_n => dat3_in_n,
+      dat3_in_p => dat3_in_p,
       data_in => data_in,
-      data_in_n => data_in_n,
-      data_in_p => data_in_p,
       fan_en_b(0) => fan_en_b(0),
       fclk_in => fclk_in,
       fclk_in_n => fclk_in_n,

@@ -59,10 +59,35 @@ set_property PACKAGE_PIN H7 [get_ports {fclk_in_n}]                          ;# 
 set_property IOSTANDARD LVDS [get_ports {fclk_in_p fclk_in_n}]
 set_property DIFF_TERM TRUE [get_ports {fclk_in_p fclk_in_n}]
 
-set_property PACKAGE_PIN K9 [get_ports {data_in_p}]                          ;# AFE DATA_P pin
-set_property PACKAGE_PIN J9 [get_ports {data_in_n}]                          ;# AFE DATA_N pin
-set_property IOSTANDARD LVDS [get_ports {data_in_p data_in_n}]
-set_property DIFF_TERM TRUE [get_ports {data_in_p data_in_n}]
+set_property PACKAGE_PIN K9 [get_ports {dat1_in_p}]                          ;# AFE DATA_P pin
+set_property PACKAGE_PIN J9 [get_ports {dat1_in_n}]                          ;# AFE DATA_N pin
+set_property IOSTANDARD LVDS [get_ports {dat1_in_p dat1_in_n}]
+set_property DIFF_TERM TRUE [get_ports {dat1_in_p dat1_in_n}]
+
+set_property PACKAGE_PIN H9 [get_ports {dat2_in_p}]                          ;# AFE DATA_P pin
+set_property PACKAGE_PIN H8 [get_ports {dat2_in_n}]                          ;# AFE DATA_N pin
+set_property IOSTANDARD LVDS [get_ports {dat2_in_p dat2_in_n}]
+set_property DIFF_TERM TRUE [get_ports {dat2_in_p dat2_in_n}]
+
+set_property PACKAGE_PIN P7 [get_ports {dat3_in_p}]                          ;# AFE DATA_P pin
+set_property PACKAGE_PIN P6 [get_ports {dat3_in_n}]                          ;# AFE DATA_N pin
+set_property IOSTANDARD LVDS [get_ports {dat3_in_p dat3_in_n}]
+set_property DIFF_TERM TRUE [get_ports {dat3_in_p dat3_in_n}]
+
+# set_property PACKAGE_PIN N7 [get_ports {dat4_in_p}]                          ;# AFE DATA_P pin
+# set_property PACKAGE_PIN N6 [get_ports {dat4_in_n}]                          ;# AFE DATA_N pin
+# set_property IOSTANDARD LVDS [get_ports {dat4_in_p dat4_in_n}]
+# set_property DIFF_TERM TRUE [get_ports {dat4_in_p dat4_in_n}]
+
+# set_property PACKAGE_PIN M6 [get_ports {dat5_in_p}]                          ;# AFE DATA_P pin
+# set_property PACKAGE_PIN L5 [get_ports {dat5_in_n}]                          ;# AFE DATA_N pin
+# set_property IOSTANDARD LVDS [get_ports {dat5_in_p dat5_in_n}]
+# set_property DIFF_TERM TRUE [get_ports {dat5_in_p dat5_in_n}]
+
+# set_property PACKAGE_PIN K8 [get_ports {dat6_in_p}]                          ;# AFE DATA_P pin
+# set_property PACKAGE_PIN K7 [get_ports {dat6_in_n}]                          ;# AFE DATA_N pin
+# set_property IOSTANDARD LVDS [get_ports {dat6_in_p dat6_in_n}]
+# set_property DIFF_TERM TRUE [get_ports {dat6_in_p dat6_in_n}]
 
 #set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets kria_bd_i/AXI_AFE_iddr_0/U0/AXI_AFE_iddr_v1_0_S00_AXI_inst/afe_fclk_single_comp/fclk_out]
 #set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets kria_bd_i/AXI_AFE_iddr_0/U0/AXI_AFE_iddr_v1_0_S00_AXI_inst/afe_data_single_comp/IBUFDS_data/O]

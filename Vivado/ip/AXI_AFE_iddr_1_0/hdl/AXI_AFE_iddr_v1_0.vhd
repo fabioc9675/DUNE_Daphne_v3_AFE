@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity AXI_AFE_iddr_v1_0 is
 	generic (
 		-- Users to add parameters here
-        NUMBER_CHANNELS     : integer   := 1;
+        NUMBER_CHANNELS     : integer;
 		-- User parameters ends
 		-- Do not modify the parameters beyond this line
 
@@ -90,6 +90,8 @@ architecture arch_imp of AXI_AFE_iddr_v1_0 is
 	-- component declaration
 	component AXI_AFE_iddr_v1_0_S00_AXI is
 		generic (
+		NUMBER_CHANNELS     : integer;
+		
 		C_S_AXI_DATA_WIDTH	: integer	:= 32;
 		C_S_AXI_ADDR_WIDTH	: integer	:= 16
 		);
@@ -163,6 +165,7 @@ begin
 -- Instantiation of Axi Bus Interface S00_AXI
 AXI_AFE_iddr_v1_0_S00_AXI_inst : AXI_AFE_iddr_v1_0_S00_AXI
 	generic map (
+	    NUMBER_CHANNELS     => NUMBER_CHANNELS,
 		C_S_AXI_DATA_WIDTH	=> C_S00_AXI_DATA_WIDTH,
 		C_S_AXI_ADDR_WIDTH	=> C_S00_AXI_ADDR_WIDTH
 	)
