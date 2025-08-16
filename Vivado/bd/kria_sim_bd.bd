@@ -7,8 +7,7 @@
       "name": "kria_sim_bd",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2022.2",
-      "validated": "true"
+      "tool_version": "2022.2"
     },
     "design_tree": {
       "afe_dclk_source_0": "",
@@ -368,8 +367,8 @@
       },
       "afe_fclk_single_0": {
         "vlnv": "xilinx.com:module_ref:afe_fclk_single:1.0",
-        "xci_name": "kria_sim_bd_afe_fclk_single_0_0",
-        "xci_path": "ip\\kria_sim_bd_afe_fclk_single_0_0\\kria_sim_bd_afe_fclk_single_0_0.xci",
+        "xci_name": "kria_sim_bd_afe_fclk_single_0_1",
+        "xci_path": "ip\\kria_sim_bd_afe_fclk_single_0_1\\kria_sim_bd_afe_fclk_single_0_1.xci",
         "inst_hier_path": "afe_fclk_single_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -390,8 +389,8 @@
       },
       "afe_data_single_0": {
         "vlnv": "xilinx.com:module_ref:afe_data_single:1.0",
-        "xci_name": "kria_sim_bd_afe_data_single_0_0",
-        "xci_path": "ip\\kria_sim_bd_afe_data_single_0_0\\kria_sim_bd_afe_data_single_0_0.xci",
+        "xci_name": "kria_sim_bd_afe_data_single_0_1",
+        "xci_path": "ip\\kria_sim_bd_afe_data_single_0_1\\kria_sim_bd_afe_data_single_0_1.xci",
         "inst_hier_path": "afe_data_single_0",
         "reference_info": {
           "ref_type": "hdl",
